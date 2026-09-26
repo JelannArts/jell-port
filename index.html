@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jelann Arts — Custom Logo Design</title>
+<meta name="description" content="Jelann Arts creates custom logo designs for games, businesses, and creators. Explore the portfolio, pricing, and request a custom logo quote.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -340,7 +341,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
       </svg>
       © Jelann Arts
     </span>
-    <a href="javascript:void(0)" onclick="openTerms()" style="text-decoration:underline;text-underline-offset:2px">Terms of Service</a>
+    <a href="#terms" onclick="openTerms(event)" style="text-decoration:underline;text-underline-offset:2px">Terms of Service</a>
     <div class="foot-discord">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
       DM me on Discord: jelann_arts
@@ -428,7 +429,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
         <div class="agree-row">
           <label class="agree-check">
             <input type="checkbox" id="agreeTerms" onchange="onAgreeChange()">
-            <span>I have read and agree to the <a href="javascript:void(0)" onclick="openTerms(event)">Terms of Service</a>.</span>
+            <span>I have read and agree to the <a href="#terms" onclick="openTerms(event)">Terms of Service</a>.</span>
           </label>
         </div>
 
@@ -469,7 +470,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   </div>
 </div>
 
-<div class="overlay" id="termsOverlay">
+<div class="overlay" id="terms">
   <div class="modal terms-modal">
     <div class="modal-close terms-close"><button onclick="closeTerms()" aria-label="Close Terms of Service">✕</button></div>
     <div class="terms-head">
