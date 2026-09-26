@@ -711,12 +711,48 @@ function copyUsername(){
   btn.textContent='Copied ✓';
   setTimeout(()=>{ btn.textContent='Copy username'; },1600);
 }
-function copyRequest(){
-  buildReview();
-  const box=document.getElementById('reviewBox');
-  navigator.clipboard.writeText(box.textContent).catch(()=>{});
-  document.getElementById('finalCtaLabel').textContent='Copied ✓';
-  setTimeout(()=>{ document.getElementById('finalCtaLabel').textContent='Copy full request details'; },1600);
+async function copyRequest(){
+  const idea = document.getElementById('idea')?.value || '—';
+  const refs = document.getElementById('refs')?.value || '—';
+  const deadline = document.getElementById('deadline')?.value || '—';
+  const notes = document.getElementById('notes')?.value || '—';
+  const name = document.getElementById('cName')?.value || '—';
+  const discord = document.getElementById('cDiscord')?.value || '—';
+  const email = document.getElementById('cEmail')?.value || '—';
+
+  const q = calculateQuote(chosenPkg, rush, extraRevisions);
+
+  const text = `Package: ${chosenPkg || 'Standard'} (${money(q.base)})
+Rush order: ${rush ? 'Yes (+' + money(q.rushFee) + ')' : 'No'}
+Additional revisions: ${extraRevisions}${extraRevisions > 0 ? ' (+' + money(q.revisionFee) + ')' : ''}
+Estimated total: ${money(q.total)}
+Idea: ${idea}
+References: ${refs}
+Deadline: ${deadline}
+Notes: ${notes}
+Name: ${name}
+Discord: ${discord}
+Email: ${email}`;
+
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+  }
+
+  const label = document.getElementById('finalCtaLabel');
+  label.textContent = 'Copied ✓';
+
+  setTimeout(() => {
+    label.textContent = 'Copy full request details';
+  }, 1600);
 }
 
 document.addEventListener('keydown',e=>{
