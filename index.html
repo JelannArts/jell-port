@@ -56,11 +56,13 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .section-head p{margin-top:14px;color:var(--ink-soft)}
 
 #work{padding:96px 0}
-.carousel{position:relative;height:360px;display:flex;align-items:center;justify-content:center}
-.car-track{position:relative;width:100%;height:100%}
-.car-slide{position:absolute;top:50%;left:50%;width:300px;aspect-ratio:4/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface);cursor:pointer;background-size:cover;background-position:center;transition:transform .38s ease,opacity .38s ease,filter .38s ease}
-.car-slide img{position:absolute;inset:0;margin:auto;height:56%;max-width:84%;width:auto;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.4))}
-.car-slide.active{box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.carousel{position:relative;height:500px;display:flex;align-items:center;justify-content:center}
+.car-track{position:relative;width:100%;height:100%;perspective:1400px;transform-style:preserve-3d}
+.car-slide{position:absolute;top:50%;left:50%;width:420px;aspect-ratio:4/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface);cursor:pointer;background-size:cover;background-position:center;transition:transform .38s ease,opacity .38s ease,filter .38s ease}
+.car-slide img{position:absolute;inset:0;margin:auto;height:72%;max-width:84%;width:auto;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.4))}
+.car-slide.active{box-shadow:0 24px 50px rgba(0,0,0,.5);animation:idleTurn 4s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes idleTurn{0%,100%{rotate: y 0deg}50%{rotate: y 8deg}}
+@media(prefers-reduced-motion:reduce){.car-slide.active{animation:none}}
 .car-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .16s ease,background-color .16s ease,box-shadow .16s ease}
 .car-nav:hover{background:var(--line);transform:translateY(-50%) scale(1.08);box-shadow:0 6px 16px rgba(0,0,0,.35)}
 .car-nav:active{transform:translateY(-50%) scale(.94);box-shadow:none}
@@ -230,8 +232,8 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 @media(max-width:860px){
   .navlinks{display:none}
   .hero h1{font-size:38px}
-  .carousel{height:280px}
-  .car-slide{width:210px}
+  .carousel{height:360px}
+  .car-slide{width:300px}
   .price-grid{grid-template-columns:1fr}
   .process-row{grid-template-columns:1fr 1fr;gap:24px 16px}
   .quote-band{flex-direction:column;align-items:flex-start;padding:40px 28px;margin:0 20px}
@@ -578,12 +580,12 @@ let carIndex=0;
 
 function slideWidth(){
   const el=document.querySelector('.car-slide');
-  return el ? el.offsetWidth : (window.innerWidth<=860?210:300);
+  return el ? el.offsetWidth : (window.innerWidth<=640?240:(window.innerWidth<=860?300:420));
 }
 
 function renderCarousel(){
   const w=window.innerWidth;
-  const spacing = w<=860 ? 150 : (w<=1000 ? 175 : 230);
+  const spacing = w<=640 ? 112 : (w<=860 ? 190 : (w<=1000 ? 245 : 310));
   const visible = w<=640 ? 1 : 2; // how many slides deep on each side
   carTrack.innerHTML='';
   for(let off=-visible; off<=visible; off++){
@@ -595,7 +597,7 @@ function renderCarousel(){
     s.style.zIndex=100-Math.abs(off);
     s.style.opacity=off===0?1:(Math.abs(off)===1?0.55:0.28);
     s.style.filter=off===0?'none':'brightness(.6)';
-    s.style.transform=`translate(-50%,-50%) translateX(${off*spacing}px) scale(${off===0?1:0.8})`;
+    s.style.transform=`translate(-50%,-50%) translateX(${off*spacing}px) rotateY(${off===0?0:(off>0?-18:18)}deg) scale(${off===0?1:0.8})`;
     s.tabIndex=0;
     s.setAttribute('role','button');
     s.setAttribute('aria-label',(off===0?'View ':'Show ')+p.title);
@@ -615,6 +617,16 @@ function carouselNav(dir){
 }
 renderCarousel();
 window.addEventListener('resize', renderCarousel);
+
+// Gentle autoplay; pause while the visitor interacts with the carousel.
+const carouselEl=document.querySelector('.carousel');
+let carouselPaused=false;
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+carouselEl.addEventListener('mouseenter',()=>carouselPaused=true);
+carouselEl.addEventListener('mouseleave',()=>carouselPaused=false);
+carouselEl.addEventListener('focusin',()=>carouselPaused=true);
+carouselEl.addEventListener('focusout',()=>carouselPaused=false);
+if(!reducedMotion){ setInterval(()=>{ if(!carouselPaused) carouselNav(1); }, 3500); }
 
 // ---- scroll lock for modals ----
 let lockCount = 0;
