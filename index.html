@@ -673,21 +673,23 @@ function onAgreeChange(){
 }
 
 function buildReview(){
-  document.getElementById('finalSummary').innerHTML = summaryHTML(chosenPkg, rush, extraRevisions);
-  const idea=document.getElementById('idea').value||'—';
-  const type=document.getElementById('logoType').value;
-  const refs=document.getElementById('refs').value||'—';
-  const deadline=document.getElementById('deadline').value||'—';
-  const notes=document.getElementById('notes').value||'—';
-  const name=document.getElementById('cName').value||'—';
-  const discord=document.getElementById('cDiscord').value||'—';
-  const email=document.getElementById('cEmail').value||'—';
+  document.getElementById('finalSummary').innerHTML =
+    summaryHTML(chosenPkg, rush, extraRevisions);
+
+  const idea = document.getElementById('idea')?.value || '—';
+  const refs = document.getElementById('refs')?.value || '—';
+  const deadline = document.getElementById('deadline')?.value || '—';
+  const notes = document.getElementById('notes')?.value || '—';
+  const name = document.getElementById('cName')?.value || '—';
+  const discord = document.getElementById('cDiscord')?.value || '—';
+  const email = document.getElementById('cEmail')?.value || '—';
+
   const q = calculateQuote(chosenPkg, rush, extraRevisions);
-  const text=`Package: ${chosenPkg||'Standard'} (${money(q.base)})
-Rush order: ${rush?'Yes (+'+money(q.rushFee)+')':'No'}
-Additional revisions: ${extraRevisions}${extraRevisions>0?' (+'+money(q.revisionFee)+')':''}
+
+  const text = `Package: ${chosenPkg || 'Standard'} (${money(q.base)})
+Rush order: ${rush ? 'Yes (+' + money(q.rushFee) + ')' : 'No'}
+Additional revisions: ${extraRevisions}${extraRevisions > 0 ? ' (+' + money(q.revisionFee) + ')' : ''}
 Estimated total: ${money(q.total)}
-Logo type: ${type}
 Idea: ${idea}
 References: ${refs}
 Deadline: ${deadline}
@@ -695,7 +697,8 @@ Notes: ${notes}
 Name: ${name}
 Discord: ${discord}
 Email: ${email}`;
-  document.getElementById('reviewBox').textContent=text;
+
+  document.getElementById('reviewBox').textContent = text;
 }
 
 function submitQuote(){
