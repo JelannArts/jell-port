@@ -587,26 +587,55 @@ function renderCarousel(){
   const w=window.innerWidth;
   const spacing = w<=640 ? 112 : (w<=860 ? 190 : (w<=1000 ? 245 : 310));
   const visible = w<=640 ? 1 : 2; // how many slides deep on each side
-  carTrack.innerHTML='';
+
+  const targets=[];
   for(let off=-visible; off<=visible; off++){
-    const i=(carIndex+off+projects.length)%projects.length;
-    const p=projects[i];
-    const s=document.createElement('div');
-    s.className='car-slide'+(off===0?' active':'');
-    s.style.backgroundImage=`url('${BG_IMG}')`;
-    s.style.zIndex=100-Math.abs(off);
-    s.style.opacity=off===0?1:(Math.abs(off)===1?0.55:0.28);
-    s.style.filter=off===0?'none':'brightness(.6)';
-    s.style.transform=`translate(-50%,-50%) translateX(${off*spacing}px) rotateY(${off===0?0:(off>0?-18:18)}deg) scale(${off===0?1:0.8})`;
-    s.tabIndex=0;
-    s.setAttribute('role','button');
-    s.setAttribute('aria-label',(off===0?'View ':'Show ')+p.title);
-    s.innerHTML=`<img src="${p.img}" alt="${p.title} logo" loading="lazy" decoding="async">`;
-    const act=()=>{ if(off===0){ openCase(i); } else { carIndex=i; renderCarousel(); } };
-    s.addEventListener('click',act);
-    s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});
-    carTrack.appendChild(s);
+    targets.push({off, i:(carIndex+off+projects.length)%projects.length});
   }
+
+  // Reuse existing slide elements (keyed by project index) instead of
+  // rebuilding the track from scratch, so the CSS transition on
+  // transform/opacity/filter has a real starting point to animate from.
+  const existing=new Map();
+  carTrack.querySelectorAll('.car-slide').forEach(el=>existing.set(Number(el.dataset.index), el));
+
+  const used=new Set();
+  targets.forEach(({off,i})=>{
+    used.add(i);
+    const p=projects[i];
+    let s=existing.get(i);
+    const isNew=!s;
+    if(isNew){
+      s=document.createElement('div');
+      s.dataset.index=i;
+      s.style.backgroundImage=`url('${BG_IMG}')`;
+      s.tabIndex=0;
+      s.setAttribute('role','button');
+      s.innerHTML=`<img src="${p.img}" alt="${p.title} logo" loading="lazy" decoding="async">`;
+      // Start new slides from the edge they enter from so they slide in
+      // rather than pop into place.
+      const fromOff = off + (off>=0 ? 1 : -1);
+      s.style.transform=`translate(-50%,-50%) translateX(${fromOff*spacing}px) rotateY(${fromOff>0?-18:18}deg) scale(.8)`;
+      s.style.opacity='0';
+      s.style.filter='brightness(.6)';
+      carTrack.appendChild(s);
+    }
+    s.className='car-slide'+(off===0?' active':'');
+    s.style.zIndex=100-Math.abs(off);
+    s.setAttribute('aria-label',(off===0?'View ':'Show ')+p.title);
+    s.onclick=()=>{ if(off===0){ openCase(i); } else { carIndex=i; renderCarousel(); } };
+    s.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();s.onclick();}};
+    const applyFinal=()=>{
+      s.style.opacity=off===0?1:(Math.abs(off)===1?0.55:0.28);
+      s.style.filter=off===0?'none':'brightness(.6)';
+      s.style.transform=`translate(-50%,-50%) translateX(${off*spacing}px) rotateY(${off===0?0:(off>0?-18:18)}deg) scale(${off===0?1:0.8})`;
+    };
+    if(isNew){ requestAnimationFrame(()=>requestAnimationFrame(applyFinal)); }
+    else{ applyFinal(); }
+  });
+
+  existing.forEach((el, idx)=>{ if(!used.has(idx)) el.remove(); });
+
   const active=projects[carIndex];
   document.getElementById('carName').textContent=active.title;
   document.getElementById('carCat').textContent=active.cat;
