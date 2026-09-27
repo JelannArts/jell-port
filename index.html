@@ -20,6 +20,13 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:-18%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 8%,rgba(198,161,91,.075),transparent 43%),radial-gradient(ellipse at 8% 58%,rgba(198,161,91,.035),transparent 38%),radial-gradient(ellipse at 92% 78%,rgba(198,161,91,.03),transparent 36%);opacity:.9}
+h1 em,h2 em{color:var(--accent)}
+.hero .kicker{letter-spacing:.12em;text-transform:uppercase}
+.section-label{letter-spacing:.07em;text-transform:uppercase}
+.price-card.pro{position:relative}
+.price-card.pro::before{content:'FEATURED';position:absolute;top:16px;right:18px;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.12em}
+
 h1,h2,h3,.serif{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;letter-spacing:-0.01em}
 h1 em,h2 em{font-style:italic;font-weight:500;color:var(--ink)}
 .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
@@ -76,10 +83,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 /* ---- Recent Works carousel ---- */
 .carousel{position:relative;display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent}
 .carousel:focus-visible{outline:none}
-.car-viewport{position:relative;flex:1;height:clamp(280px,36vw,420px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);scrollbar-width:none}
+.car-viewport{position:relative;flex:1;height:clamp(340px,40vw,480px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);scrollbar-width:none}
 .car-viewport::-webkit-scrollbar{display:none;height:0;width:0}
 .car-track{position:relative;width:100%;height:100%}
-.car-slide{position:absolute;top:50%;left:50%;width:min(380px,60vw);aspect-ratio:4/3;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0;font:inherit;color:inherit;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transform:translate(-50%,-50%);transition:transform .62s cubic-bezier(.22,1,.36,1),opacity .62s ease,border-color .4s ease,box-shadow .4s ease;will-change:transform,opacity}
+.car-slide{position:absolute;top:50%;left:50%;width:min(440px,68vw);aspect-ratio:4/3;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0;font:inherit;color:inherit;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transform:translate(-50%,-50%);transition:transform .62s cubic-bezier(.22,1,.36,1),opacity .62s ease,border-color .4s ease,box-shadow .4s ease;will-change:transform,opacity}
 .car-slide::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(198,161,91,.22),transparent 68%);opacity:0;transition:opacity .4s ease}
 .car-slide img{position:relative;max-width:74%;max-height:66%;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .4s ease}
 .car-slide.active{border-color:var(--accent);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 46px rgba(198,161,91,.2)}
@@ -99,7 +106,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 @media(max-width:700px){
   .car-arrow{display:none}
   .car-viewport{height:clamp(240px,66vw,320px)}
-  .car-slide{width:min(300px,70vw)}
+  .car-slide{width:min(340px,76vw)}
 }
 
 #pricing{padding:96px 0;border-top:1px solid var(--line)}
@@ -608,7 +615,7 @@ const projects = [
 const carTrack=document.getElementById('carTrack');
 const carousel=document.getElementById('carousel');
 
-const AUTOPLAY_MS = 1000;
+const AUTOPLAY_MS = 5200;
 let carActive = 0;
 let carRAF = null;
 let carPaused = false;
@@ -639,9 +646,9 @@ function updateCarousel(){
     if(offset > n/2) offset -= n;
     if(offset < -n/2) offset += n;
     const dist = Math.abs(offset);
-    const scale = dist===0 ? 1 : dist===1 ? .78 : .6;
+    const scale = dist===0 ? 1.12 : dist===1 ? .78 : .6;
     const opacity = dist===0 ? 1 : dist===1 ? .5 : dist===2 ? .18 : 0;
-    el.style.transform = `translate(-50%,-50%) translateX(${offset*62}%) scale(${scale})`;
+    el.style.transform = `translate(-50%,-50%) translateX(${offset*68}%) scale(${scale})`;
     el.style.opacity = opacity;
     el.style.zIndex = 5 - dist;
     el.classList.toggle('active', dist===0);
