@@ -78,7 +78,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .section-head h2{font-size:37px;line-height:1.12}
 .section-head p{margin-top:16px;color:var(--ink-soft);font-size:16px}
 
-#work{padding:108px 0 116px}
+#work{padding-top:108px;padding-bottom:116px}
 
 /* ---- Recent Works carousel ---- */
 .carousel{position:relative;display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent}
@@ -109,7 +109,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
   .car-slide{width:min(340px,76vw)}
 }
 
-#pricing{padding:96px 0;border-top:1px solid var(--line)}
+#pricing{padding-top:96px;padding-bottom:96px;border-top:1px solid var(--line)}
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .price-card{border:1px solid var(--line);border-radius:3px;padding:40px;background:var(--surface)}
 .price-card.pro{border-color:var(--accent);box-shadow:0 0 44px rgba(198,161,91,.16)}
@@ -254,6 +254,15 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 .switch.on{background:var(--accent);box-shadow:0 0 14px rgba(198,161,91,.5)}
 .switch .dot{position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:transform .18s ease}
 .switch.on .dot{transform:translateX(18px)}
+.pay-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.pay-opt{border:1px solid var(--line);border-radius:3px;padding:14px 8px;cursor:pointer;appearance:none;-webkit-appearance:none;font:inherit;text-align:center;color:var(--ink);background:transparent;display:flex;flex-direction:column;align-items:center;gap:8px;transition:border-color .18s ease,background-color .18s ease,transform .18s ease}
+.pay-opt:hover{border-color:var(--ink-soft);transform:translateY(-1px)}
+.pay-opt svg{height:30px;width:auto;max-width:30px;flex-shrink:0;opacity:.8;transition:opacity .18s ease}
+.pay-opt:hover svg,.pay-opt.sel svg{opacity:1}
+.pay-opt .nm{font-weight:600;font-size:13px}
+.pay-opt.sel{border-color:var(--accent);background:var(--surface);box-shadow:0 0 18px rgba(198,161,91,.18)}
+.pay-hint{font-size:12px;color:var(--ink-soft);margin-top:8px}
+@media(max-width:420px){.pay-pick{grid-template-columns:1fr}.pay-opt{flex-direction:row;justify-content:center}}
 .qw-nav{display:flex;justify-content:space-between;margin-top:26px;gap:12px}
 .review-box{border:1px solid var(--line);border-radius:3px;padding:16px;background:var(--surface);font-size:13px;color:var(--ink-soft);margin-top:16px;white-space:pre-line}
 .discord-cta{margin-top:20px;background:var(--accent);color:var(--paper);border:none;border-radius:6px;padding:14px;width:100%;font-weight:600;font-size:14px;letter-spacing:.01em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;box-shadow:0 0 20px rgba(198,161,91,.25)}
@@ -337,7 +346,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<section id="about" class="wrap" style="padding:88px 0 0">
+<section id="about" class="wrap" style="padding-top:88px;padding-bottom:0">
   <div class="section-head">
     <div class="section-label"><span class="eb-num">03</span> About</div>
     <h2>Game logos, <em>specifically.</em></h2>
@@ -345,7 +354,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<section id="process" class="wrap" style="padding:56px 0 96px;border-bottom:1px solid var(--line)">
+<section id="process" class="wrap" style="padding-top:56px;padding-bottom:96px;border-bottom:1px solid var(--line)">
   <div class="section-head">
     <div class="section-label"><span class="eb-num">04</span> Process</div>
     <h2>From brief to <em>delivery.</em></h2>
@@ -491,6 +500,27 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
         <div class="field"><label for="cName">Name / username</label><input id="cName" placeholder="Your name or username"></div>
         <div class="field"><label for="cDiscord">Discord username</label><input id="cDiscord" placeholder="username#0000"></div>
         <div class="field"><label for="cEmail">Email (optional)</label><input id="cEmail" placeholder="you@email.com"></div>
+        <div class="field" id="payField">
+          <label>Payment method</label>
+          <div class="pay-pick" role="group" aria-label="Payment method">
+            <button type="button" class="pay-opt" data-pay="Crypto" onclick="pickPay('Crypto')" aria-pressed="false">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(0.00630876,-0.00301984)">
+<path fill="#f7931a" d="m63.033,39.744c-4.274,17.143-21.637,27.576-38.782,23.301-17.138-4.274-27.571-21.638-23.295-38.78,4.272-17.145,21.635-27.579,38.775-23.305,17.144,4.274,27.576,21.64,23.302,38.784z"/>
+<path fill="#FFF" d="m46.103,27.444c0.637-4.258-2.605-6.547-7.038-8.074l1.438-5.768-3.511-0.875-1.4,5.616c-0.923-0.23-1.871-0.447-2.813-0.662l1.41-5.653-3.509-0.875-1.439,5.766c-0.764-0.174-1.514-0.346-2.242-0.527l0.004-0.018-4.842-1.209-0.934,3.75s2.605,0.597,2.55,0.634c1.422,0.355,1.679,1.296,1.636,2.042l-1.638,6.571c0.098,0.025,0.225,0.061,0.365,0.117-0.117-0.029-0.242-0.061-0.371-0.092l-2.296,9.205c-0.174,0.432-0.615,1.08-1.609,0.834,0.035,0.051-2.552-0.637-2.552-0.637l-1.743,4.019,4.569,1.139c0.85,0.213,1.683,0.436,2.503,0.646l-1.453,5.834,3.507,0.875,1.439-5.772c0.958,0.26,1.888,0.5,2.798,0.726l-1.434,5.745,3.511,0.875,1.453-5.823c5.987,1.133,10.489,0.676,12.384-4.739,1.527-4.36-0.076-6.875-3.226-8.515,2.294-0.529,4.022-2.038,4.483-5.155zm-8.022,11.249c-1.085,4.36-8.426,2.003-10.806,1.412l1.928-7.729c2.38,0.594,10.012,1.77,8.878,6.317zm1.086-11.312c-0.99,3.966-7.1,1.951-9.082,1.457l1.748-7.01c1.982,0.494,8.365,1.416,7.334,5.553z"/>
+</g></svg>
+              <span class="nm">Crypto</span>
+            </button>
+            <button type="button" class="pay-opt" data-pay="PayPal" onclick="pickPay('PayPal')" aria-pressed="false">
+              <svg viewBox="0 0 154.728 190.5" aria-hidden="true"><g transform="translate(898.192 276.071)"><path d="M-837.663-237.968a5.49 5.49 0 0 0-5.423 4.633l-9.013 57.15-8.281 52.514-.005.044.01-.044 8.281-52.514c.421-2.669 2.719-4.633 5.42-4.633h26.404c26.573 0 49.127-19.387 53.246-45.658.314-1.996.482-3.973.52-5.924v-.003h-.003c-6.753-3.543-14.683-5.565-23.372-5.565z" fill="#001c64"/><path d="M-766.506-232.402c-.037 1.951-.207 3.93-.52 5.926-4.119 26.271-26.673 45.658-53.246 45.658h-26.404c-2.701 0-4.999 1.964-5.42 4.633l-8.281 52.514-5.197 32.947a4.46 4.46 0 0 0 4.405 5.153h28.66a5.49 5.49 0 0 0 5.423-4.633l7.55-47.881c.423-2.669 2.722-4.636 5.423-4.636h16.876c26.573 0 49.124-19.386 53.243-45.655 2.924-18.649-6.46-35.614-22.511-44.026z" fill="#0070e0"/><path d="M-870.225-276.071a5.49 5.49 0 0 0-5.423 4.636l-22.489 142.608a4.46 4.46 0 0 0 4.405 5.156h33.351l8.281-52.514 9.013-57.15a5.49 5.49 0 0 1 5.423-4.633h47.782c8.691 0 16.621 2.025 23.375 5.563.46-23.917-19.275-43.666-46.412-43.666z" fill="#003087"/></g></svg>
+              <span class="nm">PayPal</span>
+            </button>
+            <button type="button" class="pay-opt" data-pay="Wise" onclick="pickPay('Wise')" aria-pressed="false">
+              <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#9FE870"/><path transform="translate(-2.2 -14.2) scale(.6)" d="M63.6269 87.7648L36 120.049H85.3267L90.872 104.824H69.7367L82.6536 89.89L82.6952 89.4915L74.2942 75.0389H112.074L82.7865 155.62H102.826L138.19 58.4942H46.825L63.6186 87.7648H63.6269Z" fill="#163300"/></svg>
+              <span class="nm">Wise</span>
+            </button>
+          </div>
+          <div class="pay-hint">Pick how you'd like to pay. Payment details are shared once your quote is confirmed.</div>
+        </div>
         <div class="qsummary" id="finalSummary"></div>
         <div class="qdisclaimer">Estimated total. Final pricing may vary depending on project requirements.</div>
 
@@ -797,12 +827,15 @@ function summaryHTML(pkgName, rushOn, extraRevisions){
   if(extraRevisions > 0){
     rows += `<div class="qrow"><span class="lbl">${extraRevisions} additional revision${extraRevisions>1?'s':''}<small>+10% of base, each</small></span><span>+${money(q.revisionFee)}</span></div>`;
   }
+  if(payMethod){
+    rows += `<div class="qrow"><span class="lbl">Payment method</span><span>${payMethod}</span></div>`;
+  }
   rows += `<div class="qrow total"><span>Estimated total</span><span>${money(q.total)}</span></div>`;
   return rows;
 }
 
 const quoteOverlay=document.getElementById('quoteOverlay');
-let step=1, chosenPkg='Standard', rush=false, extraRevisions=0;
+let step=1, chosenPkg='Standard', rush=false, extraRevisions=0, payMethod='';
 
 function openQuote(pkg){
   if(pkg) pickPkg(pkg);
@@ -861,8 +894,20 @@ function nextStep(){
 }
 function prevStep(){ if(step>1){ step--; updateSteps(); } }
 
+function pickPay(name){
+  payMethod=name;
+  document.querySelectorAll('.pay-opt').forEach(el=>{
+    const sel=el.dataset.pay===name;
+    el.classList.toggle('sel',sel);
+    el.setAttribute('aria-pressed',sel?'true':'false');
+  });
+  onAgreeChange();
+  if(step===4) buildReview();
+}
 function onAgreeChange(){
-  document.getElementById('submitBtn').disabled = !document.getElementById('agreeTerms').checked;
+  document.getElementById('submitBtn').disabled = !(document.getElementById('agreeTerms').checked && payMethod);
+  const hint=document.querySelector('#finalCta .copy-hint');
+  if(hint) hint.textContent = payMethod ? 'Requires agreeing to the Terms of Service above.' : 'Choose a payment method and agree to the Terms of Service above.';
 }
 
 function buildReview(){
@@ -883,6 +928,7 @@ function buildReview(){
 Rush order: ${rush ? 'Yes (+' + money(q.rushFee) + ')' : 'No'}
 Additional revisions: ${extraRevisions}${extraRevisions > 0 ? ' (+' + money(q.revisionFee) + ')' : ''}
 Estimated total: ${money(q.total)}
+Payment method: ${payMethod || '-'}
 Idea: ${idea}
 References: ${refs}
 Deadline: ${deadline}
@@ -895,7 +941,7 @@ Email: ${email}`;
 }
 
 function submitQuote(){
-  if(!document.getElementById('agreeTerms').checked) return;
+  if(!document.getElementById('agreeTerms').checked || !payMethod) return;
   document.getElementById('confirmSummary').innerHTML = summaryHTML(chosenPkg, rush, extraRevisions);
   document.getElementById('qwNav').style.display='none';
   document.getElementById('finalCta').style.display='none';
@@ -922,6 +968,7 @@ async function copyRequest(){
 Rush order: ${rush ? 'Yes (+' + money(q.rushFee) + ')' : 'No'}
 Additional revisions: ${extraRevisions}${extraRevisions > 0 ? ' (+' + money(q.revisionFee) + ')' : ''}
 Estimated total: ${money(q.total)}
+Payment method: ${payMethod || '-'}
 Idea: ${idea}
 References: ${refs}
 Deadline: ${deadline}
@@ -958,7 +1005,7 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'){ navCase(1); }
   }
 });
-pickPkg('Standard');
+pickPkg("Standard");
 updateSteps();
 </script>
 </body>
