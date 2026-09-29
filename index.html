@@ -24,8 +24,8 @@ body::before{content:'';position:fixed;inset:-18%;z-index:-1;pointer-events:none
 h1 em,h2 em{color:var(--accent)}
 .hero .kicker{letter-spacing:.12em;text-transform:uppercase}
 .section-label{letter-spacing:.07em;text-transform:uppercase}
-.price-card.pro{position:relative}
-.price-card.pro::before{content:'FEATURED';position:absolute;top:16px;right:18px;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.12em}
+.price-card.feat{position:relative}
+.price-card.feat::before{content:'MOST POPULAR';position:absolute;top:16px;right:18px;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.12em}
 
 h1,h2,h3,.serif{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;letter-spacing:-0.01em}
 h1 em,h2 em{font-style:italic;font-weight:500;color:var(--ink)}
@@ -110,9 +110,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 }
 
 #pricing{padding-top:96px;padding-bottom:96px;border-top:1px solid var(--line)}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.price-card{border:1px solid var(--line);border-radius:3px;padding:40px;background:var(--surface)}
-.price-card.pro{border-color:var(--accent);box-shadow:0 0 44px rgba(198,161,91,.16)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price-card{border:1px solid var(--line);border-radius:3px;padding:36px 32px;background:var(--surface)}
+.price-card.feat{border-color:var(--accent);box-shadow:0 0 44px rgba(198,161,91,.16)}
 .price-card .p-name{font-size:13px;font-weight:600;color:var(--ink-soft)}
 .price-card .p-amt{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;margin-top:12px}
 .price-card ul{margin-top:24px;display:flex;flex-direction:column;gap:12px}
@@ -121,8 +121,17 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .price-card .choose{margin-top:28px;width:100%;padding:13px;border-radius:6px;font-weight:600;font-size:14px;letter-spacing:.01em;cursor:pointer;border:1px solid var(--ink);background:transparent;color:var(--ink);transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,color .18s ease}
 .price-card .choose:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.35),0 0 26px rgba(198,161,91,.4)}
 .price-card .choose:active{transform:translateY(0) scale(.98);box-shadow:none}
-.price-card.pro .choose{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.price-card.pro .choose:hover{background:#EDEAE0}
+.price-card.feat .choose{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.price-card.feat .choose:hover{background:#EDEAE0}
+.studios{padding-top:72px;padding-bottom:0}
+.studios-label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:22px}
+.studio-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.studio-card{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:14px;width:140px;padding:22px 12px 16px;border:1px solid var(--line);border-radius:3px;background:var(--surface);transition:border-color .2s ease,transform .2s ease}
+.studio-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.studio-card .logo-box{height:76px;width:100%;display:flex;align-items:center;justify-content:center}
+.studio-card img{max-width:100%;max-height:76px;width:auto;height:auto;object-fit:contain}
+.studio-card .nm{font-size:12px;font-weight:600;color:var(--ink-soft);text-align:center;line-height:1.3}
+@media(max-width:520px){.studio-card{width:calc(50% - 6px)}}
 .price-extras{margin-top:28px;display:flex;gap:20px;flex-wrap:wrap}
 .rev-note{margin-top:22px;font-size:12.5px;color:var(--ink-soft);max-width:70ch;line-height:1.6}
 .process-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -346,6 +355,19 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
+<section id="studios" class="wrap studios" aria-label="Studios worked with">
+  <div class="studios-label">Worked with</div>
+  <div class="studio-row">
+    <div class="studio-card"><div class="logo-box"><img src="studio-baobab.webp" alt="Fun Simulators To Play logo, designed for Baobab Studios" loading="lazy"></div><div class="nm">Baobab Studios</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-starx.webp" alt="StarX logo, designed for StarX" loading="lazy"></div><div class="nm">StarX</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-polycore.webp" alt="Flip A Boat! logo, designed for PolyCore Games" loading="lazy"></div><div class="nm">PolyCore Games</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-gamebreakers.webp" alt="Ravo's RNG logo, designed for GameBreakers Studios" loading="lazy"></div><div class="nm">GameBreakers Studios</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-arch.webp" alt="Z Piece logo, designed for Arch Studios" loading="lazy"></div><div class="nm">Arch Studios</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-clariyu.webp" alt="Let's Go Camping! logo, designed for Clariyu" loading="lazy"></div><div class="nm">Clariyu</div></div>
+    <div class="studio-card"><div class="logo-box"><img src="studio-wheelie-district.webp" alt="Wheelie District logo, designed for Wheelie District Studios" loading="lazy"></div><div class="nm">Wheelie District Studios</div></div>
+  </div>
+</section>
+
 <section id="about" class="wrap" style="padding-top:88px;padding-bottom:0">
   <div class="section-head">
     <div class="section-label"><span class="eb-num">03</span> About</div>
@@ -369,21 +391,33 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 <section id="pricing" class="wrap">
   <div class="section-head">
     <div class="section-label"><span class="eb-num">02</span> Pricing</div>
-    <h2>Two ways to <em>work together.</em></h2>
+    <h2>Three ways to <em>work together.</em></h2>
     <p>Pick the package that fits the project. Pricing is fixed and the revision process is clear from the start.</p>
   </div>
   <div class="price-grid">
     <div class="price-card">
+      <div class="p-name">STARTER</div>
+      <div class="p-amt">$65</div>
+      <ul>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 concept</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 revision included</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~1–2 week turnaround</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG</li>
+      </ul>
+      <button class="choose" onclick="openQuote('Starter')">Get Started</button>
+    </div>
+    <div class="price-card feat">
       <div class="p-name">STANDARD</div>
       <div class="p-amt">$90</div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 revision included</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~1 week turnaround</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>2 revisions included</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~5–7 day turnaround</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG + one-color (white/black) version</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 alternate color variation</li>
       </ul>
       <button class="choose" onclick="openQuote('Standard')">Get Started</button>
     </div>
-    <div class="price-card pro">
+    <div class="price-card">
       <div class="p-name">PROFESSIONAL</div>
       <div class="p-amt">$150</div>
       <ul>
@@ -399,6 +433,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
     <div class="extra"><strong>Additional revision</strong><span class="pct">+10% per revision</span><span class="note">Also calculated from the selected package price, not a running total.</span></div>
   </div>
   <p class="rev-note">Revisions are for refining the logo created from your original brief. A completely new concept, new direction, or work outside the original project scope may be treated as a new project and require a separate quote.</p>
+  <p class="rev-note">How payment works: pay 50% to start, 50% when you approve the final logo.</p>
 </section>
 
 <section id="contact" style="padding-bottom:100px">
@@ -452,6 +487,9 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
         <h2>Choose a package</h2>
         <p class="sub">You can change this later, this just helps me scope the project.</p>
         <div class="pkg-pick">
+          <button type="button" class="pkg-opt" data-pkg="Starter" onclick="pickPkg('Starter')" aria-pressed="false">
+            <div class="nm">Starter</div><div class="am">$65</div>
+          </button>
           <button type="button" class="pkg-opt" data-pkg="Standard" onclick="pickPkg('Standard')" aria-pressed="true">
             <div class="nm">Standard</div><div class="am">$90</div>
           </button>
@@ -581,9 +619,9 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
     <div class="terms-body">
      <section><h3>1. Overview</h3><p>These terms cover custom logo design commissions through Jelann Arts. Starting a project means you agree to the terms below.</p></section>
 
-<section><h3>2. Services</h3><p>Jelann Arts provides custom logo design: Standard and Professional packages, as described on the pricing page. No other design services are included unless separately agreed.</p></section>
+<section><h3>2. Services</h3><p>Jelann Arts provides custom logo design: Starter, Standard and Professional packages, as described on the pricing page. No other design services are included unless separately agreed.</p></section>
 
-<section><h3>3. Pricing</h3><p>Standard is $90 and Professional is $150. Rush orders add 25% of the base package price. Additional revisions add 10% of the base package price, per revision. All add-ons are calculated from the original base price, not a running total.</p></section>
+<section><h3>3. Pricing</h3><p>Starter is $65, Standard is $90 and Professional is $150. Rush orders add 25% of the base package price. Additional revisions add 10% of the base package price, per revision. All add-ons are calculated from the original base price, not a running total.</p></section>
 
 <section><h3>4. Payment</h3><p>Projects require 50% payment upfront and 50% upon completion. Work begins once the upfront payment is received. Payments are non-refundable once work has started, except where stated otherwise in Section 12.</p></section>
 
@@ -597,7 +635,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 
 <section><h3>7. Rush Orders</h3><p>A rush fee (+25% of base price) secures priority scheduling and a faster turnaround. It does not include extra revisions or additional work beyond the selected package.</p></section>
 
-<section><h3>8. Final Files</h3><p>Final logos are delivered as PNG by default. SVG is provided when technically appropriate and when the logo's complexity allows for a clean vector export. Editable source/working files (such as Affinity Designer files) are not included by default. Source files may be provided upon request and may be subject to an additional fee, depending on the project and file requirements. The designer is not required to provide internal working files, drafts, unused concepts, or other production files unless explicitly agreed upon before delivery.</p></section>
+<section><h3>8. Final Files</h3><p>Final logos are delivered as PNG by default. The Standard package also includes a one-color (white or black) version and one alternate color variation. SVG is provided when technically appropriate and when the logo's complexity allows for a clean vector export. Editable source/working files (such as Affinity Designer files) are not included by default. Source files may be provided upon request and may be subject to an additional fee, depending on the project and file requirements. The designer is not required to provide internal working files, drafts, unused concepts, or other production files unless explicitly agreed upon before delivery.</p></section>
 
 <section><h3>9. Client Responsibilities</h3><p>To keep a project on track, please provide a usable brief, relevant references, clear direction, and timely feedback. If direction changes substantially after a concept has been approved, the resulting work may be treated as a new project under Section 6.</p></section>
 
@@ -797,13 +835,14 @@ termsOverlay.addEventListener('click',e=>{ if(e.target===termsOverlay) closeTerm
 
 // ---- single source of truth for pricing ----
 const pricing = {
+  starter: 65,
   standard: 90,
   professional: 150,
   rushPercentage: 0.25,
   revisionPercentage: 0.10
 };
 // Number of revisions included with each package - not yet finalized, edit here.
-const INCLUDED_REVISIONS = { standard: 1, professional: 3 };
+const INCLUDED_REVISIONS = { starter: 1, standard: 2, professional: 3 };
 
 function money(n){
   return n % 1 === 0 ? `$${n}` : `$${n.toFixed(2)}`;
@@ -868,7 +907,7 @@ function changeRevisions(delta){
   renderLiveSummary();
 }
 function renderLiveSummary(){
-  const included = chosenPkg === 'Professional' ? INCLUDED_REVISIONS.professional : INCLUDED_REVISIONS.standard;
+  const included = INCLUDED_REVISIONS[(chosenPkg||'Standard').toLowerCase()] ?? INCLUDED_REVISIONS.standard;
   const note = document.getElementById('includedRevNote');
   if(note) note.textContent = `${chosenPkg || 'Standard'} includes ${included} revisions. Anything beyond that is billed as an additional revision below.`;
   const live = document.getElementById('liveSummary');
