@@ -5,17 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-13T4FH7Y68"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-13T4FH7Y68');
-</script>
-<title>Jelann Arts | Custom Game Logos</title>
-<meta name="description" content="Jelann Arts designs custom logos for games, with a focus on Roblox titles. Browse the portfolio, see pricing, and request a quote.">
+<title>Jelann Arts | Custom Game Logos for Roblox Developers</title>
+<meta name="description" content="Custom game logos for Roblox developers and indie studios. Fixed prices, clear revisions, fast turnaround. See the work and get a quote.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,500;0,12..96,600;0,12..96,700;0,12..96,800;1,12..96,500;1,12..96,600&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -302,6 +293,124 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   .viewer-nav.next{right:8px}
   .viewer-caption{left:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px)}
 }
+
+/* ---- Layout redesign (inspired by a tile-logo + bar header, case-study pages) ---- */
+header{background:var(--surface)}
+.nav{max-width:none;padding:0;height:72px;align-items:stretch}
+.brand{font-size:0;gap:0;background:var(--ink);width:72px;justify-content:center}
+.brand-mark{height:30px}
+.brand-mark .ink-fill{fill:var(--paper)}
+.brand-mark .paper-fill{fill:var(--ink)}
+.navlinks{background:var(--paper);gap:0;padding:0 24px 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.navlinks a{display:flex;align-items:center;padding:0 20px;height:100%;border-bottom:2px solid transparent;color:var(--ink-soft);transition:color .18s,border-color .18s}
+.navlinks a:hover{color:var(--accent);border-color:var(--accent)}
+.nav-cta{margin-left:14px;align-self:center}
+.section-head{max-width:none;border-bottom:1px solid var(--line);padding-bottom:30px}
+.section-head p{max-width:56ch}
+.section-head h2{font-weight:500}
+#about{padding-top:96px!important;padding-bottom:96px!important}
+.studios-label{text-align:left;border-bottom:1px solid var(--line);padding-bottom:14px}
+/* case-study page */
+.viewer-overlay-root{display:block;overflow-y:auto;background:var(--paper);padding:0;backdrop-filter:none}
+.viewer-overlay-root .viewer{height:62vh;min-height:380px}
+.viewer-overlay-root .viewer-close{position:fixed}
+.case-detail{padding:56px 0 96px;background:var(--paper)}
+.case-detail .cd-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.case-detail h2{font-size:48px;line-height:1.05;color:var(--accent);font-weight:500;margin:10px 0 28px}
+.case-detail hr{border:0;border-top:1px solid var(--line);margin:0 0 28px}
+.cd-grid{display:grid;grid-template-columns:240px 1fr;gap:48px}
+.cd-meta div{margin-bottom:22px}
+.cd-meta span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px}
+.cd-meta b{font-weight:500;font-size:16px}
+.cd-body h3{font-size:22px;margin-bottom:12px}
+.cd-body p{color:var(--ink-soft);max-width:60ch;font-size:17px}
+.cd-body .btn-primary{margin-top:28px}
+.cd-more{margin-top:72px}
+.cd-more h3{font-size:22px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:22px}
+.cd-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cd-row button{background:var(--surface);border:1px solid var(--line);border-radius:3px;height:110px;display:flex;align-items:center;justify-content:center;padding:14px;cursor:pointer;transition:border-color .2s,transform .2s}
+.cd-row button:hover{border-color:var(--accent);transform:translateY(-3px)}
+.cd-row img{max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:760px){.cd-grid{grid-template-columns:1fr;gap:12px}.case-detail h2{font-size:36px}.nav{height:64px}.brand{width:64px}}
+
+/* ---- Full-width "latest work" hero slider ---- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero2{position:relative;height:min(78vh,680px);min-height:520px;overflow:hidden;border-bottom:1px solid var(--line);background:var(--paper)}
+.h-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s}
+.h-slide.active{opacity:1;visibility:visible}
+.h-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,13,11,.94) 0,rgba(12,13,11,.72) 45%,rgba(12,13,11,.35) 100%)}
+.h-inner{position:relative;height:100%;max-width:1140px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.h-kicker{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:16px}
+.h-slide h2{font-size:56px;line-height:1.04;font-weight:500}
+.h-slide p{margin-top:18px;color:var(--ink-soft);font-size:17px;max-width:44ch}
+.h-slide .hero-actions{margin-top:30px}
+.h-logo{display:flex;align-items:center;justify-content:center}
+.h-logo img{max-width:100%;max-height:340px;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,0,0,.55))}
+.h-tag{position:absolute;left:32px;bottom:26px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.h-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.35);color:#fff;font-size:20px;cursor:pointer;transition:background .2s,border-color .2s}
+.h-arrow:hover{background:rgba(0,0,0,.6);border-color:var(--accent)}
+.h-prev{left:14px}.h-next{right:14px}
+.h-dots{position:absolute;right:32px;bottom:22px;z-index:3;display:flex;gap:8px}
+.h-dots button{width:26px;height:4px;border:0;border-radius:2px;background:rgba(255,255,255,.25);cursor:pointer;padding:0}
+.h-dots button.active{background:var(--accent)}
+@media(max-width:760px){.hero2{height:auto;min-height:560px}.h-inner{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:20px;padding:56px 24px 72px}.h-logo{order:-1}.h-logo img{max-height:150px}.h-slide h2{font-size:38px}.h-slide::before{background:rgba(12,13,11,.78)}.h-arrow{display:none}.h-tag{left:24px}.h-dots{right:24px}}
+
+.brand{background:rgba(245,243,236,.5)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.pg-card{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:0 0 16px;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s,transform .2s}
+.pg-card:hover,.pg-card:focus-visible{border-color:var(--accent);transform:translateY(-3px)}
+.pg-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(circle at center,rgba(198,161,91,.14),transparent 70%)}
+.pg-img img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .3s}
+.pg-card:hover .pg-img img{transform:scale(1.05)}
+.pg-name{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:600;padding:0 18px;margin-top:4px}
+.pg-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding:0 18px;margin-top:4px}
+
+.brand{background:transparent}
+.brand-mark .ink-fill{fill:var(--ink)}
+.brand-mark .paper-fill{fill:var(--paper)}
+
+.proj-grid{grid-template-columns:repeat(3,1fr);gap:20px}
+.pg-card{height:100%}
+.pg-img{padding:28px}
+.pg-name{margin-top:6px}
+@media(max-width:900px){.proj-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+@media(max-width:420px){.proj-grid{grid-template-columns:1fr}}
+
+/* ---- Recent projects: full-bleed grid with colour underline + notch ---- */
+.work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
+.work-head h2{font-size:48px}
+.pj-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;width:100vw;margin-left:calc(50% - 50vw)}
+.pj-half{grid-column:span 3}.pj-third{grid-column:span 2}.pj-full{grid-column:span 6}
+.pj-link{display:block;width:100%;height:100%;padding:0;border:0;background:var(--paper);color:inherit;font:inherit;text-align:left;cursor:pointer}
+.pj-img{position:relative;display:block}
+.pj-media{display:flex;align-items:center;justify-content:center;overflow:hidden;background-size:cover;aspect-ratio:4/3;padding:12%}
+.pj-half .pj-media{aspect-ratio:16/9}.pj-full .pj-media{aspect-ratio:21/8}
+.pj-media img{max-width:70%;max-height:100%;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(0,0,0,.5));transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.pj-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--c);transition:height .25s}
+.pj-tri{position:absolute;left:32px;bottom:-9px;width:18px;height:18px;background:var(--c);transform:rotate(45deg);z-index:2}
+.pj-text{display:block;padding:30px 32px 34px;border-bottom:1px solid var(--line)}
+.pj-title{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:600;transition:color .2s}
+.pj-tag{display:block;margin-top:6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.pj-link:hover .pj-media img,.pj-link:focus-visible .pj-media img{transform:scale(1.06)}
+.pj-link:hover .pj-bar,.pj-link:focus-visible .pj-bar{height:8px}
+.pj-link:hover .pj-title,.pj-link:focus-visible .pj-title{color:var(--c)}
+@media(max-width:900px){.pj-third{grid-column:span 3}.pj-full{grid-column:span 6}.work-head h2{font-size:36px}}
+@media(max-width:600px){.pj-half,.pj-third,.pj-full{grid-column:span 6}.pj-full .pj-media{aspect-ratio:4/3}.work-head{flex-direction:column;align-items:flex-start}}
+
+/* tidy: hairline grid, one underline, hanging notch, graceful fallback */
+.pj-grid{gap:1px;background:var(--line)}
+.pj-link{box-sizing:border-box}
+.pj-img{width:100%}
+.pj-media{background-color:var(--surface);background-blend-mode:normal}
+.pj-text{border-bottom:0;padding:26px 28px 30px}
+.pj-bar{height:3px}
+.pj-tri{left:28px;bottom:-10px;width:20px;height:10px;background:var(--c);transform:none;clip-path:polygon(0 0,100% 0,50% 100%)}
+.pj-link:hover .pj-bar,.pj-link:focus-visible .pj-bar{height:6px}
+.pj-link:hover .pj-tri,.pj-link:focus-visible .pj-tri{bottom:-10px}
+
+/* one continuous header bar */
+header{background:rgba(12,13,11,.86)}
+.navlinks{background:transparent}
 </style>
 </head>
 <body>
@@ -309,7 +418,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 <header>
   <nav class="nav">
     <div class="brand">
-      <svg class="brand-mark" viewBox="0 0 344 422" xmlns="http://www.w3.org/2000/svg">
+      <svg class="brand-mark" viewBox="0 0 344 422" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jelann Arts logo">
         <path class="ink-fill" d="M 22.02,248 c -0.32,-1.46 0.17,-2.49 1.47,-3.08 c 28.07,-10.86 56.13,-21.75 84.18,-32.66 c 1.24,-0.6 2.46,-0.57 3.66,0.1 c 10.47,6.4 20.86,12.92 31.17,19.55 c 0.25,0.5 0.37,1.03 0.35,1.59 c -0.23,18 -0.16,36 0.21,54 c 1.47,8.83 0.94,24.27 4.95,31.99 c 1.79,1.6 4.4,0.05 6.02,-1.06 c 11.79,-10.91 16.47,-36.97 20.61,-52.12 c 8.15,-38.78 13.54,-79.27 17.2,-118.7 c -0.55,-0.53 -1.17,-0.58 -1.85,-0.15 c -27,12.03 -53.98,24.1 -80.93,36.24 c -0.79,0.31 -1.61,0.4 -2.45,0.29 c -6.66,-3.49 -21.79,-11.28 -27.16,-14.93 c -15.29,-20.1 -30.54,-40.22 -45.78,-60.36 c -0.56,-0.55 -0.71,-1.18 -0.46,-1.89 c 85.89,-34.86 171.82,-69.67 257.78,-104.42 c 0.68,-0.21 1.35,-0.18 2.01,0.08 c 11.03,6.1 22.2,11.94 33.5,17.52 c 0.31,0.45 0.46,0.94 0.46,1.49 c -10.4,64.56 -23.08,127.95 -38.39,191.54 c -15.95,57.31 -32.57,128.02 -72.07,173.98 c -27.98,31.85 -69.47,25.11 -105.19,12.35 c -52.11,-21.21 -76.71,-69.06 -86.16,-121.87 c -1.38,-9.77 -2.26,-19.74 -3.13,-29.48 Z M 242.97,11.73 c 0.71,0.15 1.42,0.32 2.12,0.51 c -70.45,26.58 -140.96,53.02 -211.52,79.31 c -0.58,-0.53 -0.81,-1.21 -0.69,-2.02 c 0.05,-3.21 0.28,-6.4 0.7,-9.58 c 0.19,-0.43 0.51,-0.73 0.95,-0.89 c 69.42,-22.67 138.9,-45.11 208.44,-67.33 Z M 39.32,257.08 c 4.03,47.62 21.81,102.66 70.02,122.15 c 50.67,19.09 87.08,-6.15 107.19,-52.21 c 18,-45.27 24.92,-92.61 36.19,-139.68 c 9.58,-46.18 19.44,-92.74 29.05,-138.88 c 0.21,-2.06 0.41,-4.07 0.61,-6.04 c -11.06,8.37 -26.13,17.63 -35.8,27.04 c -0.22,-0.7 -0.05,-1.33 0.52,-1.9 c 12.35,-12.28 24.48,-26.6 36.35,-39.51 c 0.68,-1.46 2.71,-7.77 1.04,-8.62 c -75.06,31.12 -150.12,62.22 -225.2,93.28 c -1.13,0.5 -1.33,1.24 -0.59,2.24 c 10.27,14.02 20.5,28.05 30.7,42.12 c 0.29,0.26 0.64,0.37 1.03,0.31 c 57.06,-25.36 114.12,-50.74 171.17,-76.13 c 0.48,0.07 0.73,-1.17 1.11,-0.59 c -0.49,1.33 -1.38,2.33 -2.66,2.99 c -16.28,17.03 -32.64,33.96 -49.1,50.81 c -4.56,3.39 -3.03,26.83 -4.09,33.04 c -4.6,46.46 -9.37,93.09 -25.62,137.2 c -6.36,15.49 -16.04,35.16 -34.74,37.05 c -22.5,-1.29 -36.4,-17.17 -43.12,-37.44 c -1.22,-4.43 -5.76,-22.02 -3.87,-25.33 c 3.82,5.57 7.54,11.21 11.16,16.94 c 0.57,0.63 0.76,1.39 1.67,0.8 c -1.2,-17.01 -2.98,-34.27 -5.06,-51.25 c -0.19,-2.09 -0.5,-14.08 -1.85,-15.14 c -2.26,0.93 -8.63,2.99 -9.79,4.96 c -5.74,14.13 -11.45,28.25 -17.13,42.36 c -0.75,-2.26 0.75,-5.07 1.13,-7.34 c 0.77,-9.29 2.71,-18.65 4.22,-27.84 c 0.24,-0.87 0.07,-1.63 -0.5,-2.28 c -14,4.77 -27.96,9.68 -41.89,14.74 c -1.27,0.2 -1.99,0.92 -2.15,2.15 Z M 344,61.04 c 0,2.64 0,5.28 0,7.92 c -0.52,0.31 -0.77,0.77 -0.76,1.38 c -12.78,79.67 -31.63,160.2 -62.27,235.07 c -10.33,25.25 -23.03,49.24 -38.09,71.97 c -0.5,0.58 -1.05,1.11 -1.64,1.58 c -0.16,-0.32 -0.31,-0.64 -0.46,-0.96 c 1.71,-2.57 3.22,-5.25 4.55,-8.03 c 9.73,-19.64 18.42,-39.72 26.06,-60.26 c 32.25,-86.82 52.42,-177.72 65.45,-269.21 c 0.6,-4.02 1.07,-8.04 1.41,-12.08 c 0.12,-0.16 0.25,-0.31 0.38,-0.46 c 0.4,1.49 0.79,3.02 1.19,4.57 c 1.17,9.31 2.37,18.61 3.59,27.92 c 0.08,0.31 0.28,0.51 0.59,0.59 Z M 61.25,176.9 c -0.16,0.38 -0.32,0.77 -0.48,1.15 c -0.74,-0.35 -1.33,-0.86 -1.77,-1.55 c -14.56,-18.71 -29.11,-37.43 -43.64,-56.17 c -1.24,-3.43 -1.27,-13.9 -1.61,-17.94 c 0.16,-1.45 0.65,-1.58 1.49,-0.37 c 15.21,25.05 30.54,50.02 46.01,74.88 Z M 112.32,197.82 c -0.13,-0.57 -0.01,-1.07 0.37,-1.47 c 2.58,0.39 2.38,-0.91 4.29,-1.95 c 20.27,-9.15 39.81,-19.94 59.76,-29.79 c 0.37,-0.24 0.71,-0.22 1.02,0.07 c -1.41,7 -2.97,13.98 -4.68,20.92 c -0.3,1.11 0.55,5.43 -1.78,3.67 c -0.33,-4.38 -1,-8.71 -2.02,-13 c -0.2,-0.95 -0.77,-1.37 -1.72,-1.27 c -13.96,5.64 -27.93,11.26 -41.9,16.86 c -2.97,2.08 -7.57,3.12 -10.46,4.68 c -1.27,-0.17 -2.23,0.26 -2.88,1.28 Z M 13.34,205.29 c 6.81,0.01 8.38,12.21 9.7,17.19 c 0.31,1.27 1.12,1.71 2.42,1.32 c 6.71,-1.23 13.42,-2.37 20.1,-3.4 c -0.93,1.14 -2.14,1.79 -3.62,1.94 c -6.65,3.35 -13.32,6.68 -20,9.97 c -0.62,0.38 -1.25,0.43 -1.89,0.15 c -2.19,-9.07 -4.42,-18.12 -6.71,-27.17 Z M 0,225.96 c 0,-0.64 0,-1.28 0,-1.92 c 1.33,-1.94 2.5,-3.99 3.5,-6.15 c 0.27,-0.33 0.62,-0.54 1.04,-0.61 c 2.39,16.36 4.87,32.72 7.45,49.1 c 0.56,3.24 2,8.18 1.54,11.33 c -0.64,-2.03 -1.13,-4.1 -1.46,-6.2 c -1.4,-1.91 -0.74,-3.23 -1.26,-5.32 c -3.49,-13.16 -6.88,-26.35 -10.17,-39.56 c -0.12,-0.32 -0.34,-0.54 -0.64,-0.67 Z M 136.02,422 c -2.33,0 -4.65,0 -6.98,0 c -0.06,-0.32 -0.24,-0.54 -0.54,-0.67 c -24.31,-2.72 -48.9,-13.51 -65.77,-31.58 c -2.64,-3.02 -5.32,-6 -8.02,-8.96 c -0.38,-0.39 -0.47,-0.84 -0.26,-1.34 c 0.72,0.5 1.51,0.9 2.35,1.19 c 11.76,10.6 32.49,23.58 47.51,29.6 c 10.07,4.27 22.09,7.47 31.71,11.76 Z"/>
         <path class="paper-fill" d="M 39.32,257.08 c 0.16,-1.23 0.88,-1.95 2.15,-2.15 c 13.93,-5.06 27.89,-9.97 41.89,-14.74 c 0.57,0.65 0.74,1.41 0.5,2.28 c -1.51,9.19 -3.45,18.55 -4.22,27.84 c -0.38,2.27 -1.88,5.08 -1.13,7.34 c 5.68,-14.11 11.39,-28.23 17.13,-42.36 c 1.16,-1.97 7.53,-4.03 9.79,-4.96 c 1.35,1.06 1.66,13.05 1.85,15.14 c 2.08,16.98 3.86,34.24 5.06,51.25 c -0.91,0.59 -1.1,-0.17 -1.67,-0.8 c -3.62,-5.73 -7.34,-11.37 -11.16,-16.94 c -1.89,3.31 2.65,20.9 3.87,25.33 c 6.72,20.27 20.62,36.15 43.12,37.44 c 18.7,-1.89 28.38,-21.56 34.74,-37.05 c 16.25,-44.11 21.02,-90.74 25.62,-137.2 c 1.06,-6.21 -0.47,-29.65 4.09,-33.04 c 16.46,-16.85 32.82,-33.78 49.1,-50.81 c 1.28,-0.66 2.17,-1.66 2.66,-2.99 c -0.38,-0.58 -0.63,0.66 -1.11,0.59 c -57.05,25.39 -114.11,50.77 -171.17,76.13 c -0.39,0.06 -0.74,-0.05 -1.03,-0.31 c -10.2,-14.07 -20.43,-28.1 -30.7,-42.12 c -0.74,-1 -0.54,-1.74 0.59,-2.24 c 75.08,-31.06 150.14,-62.16 225.2,-93.28 c 1.67,0.85 -0.36,7.16 -1.04,8.62 c -11.87,12.91 -24,27.23 -36.35,39.51 c -0.57,0.57 -0.74,1.2 -0.52,1.9 c 9.67,-9.41 24.74,-18.67 35.8,-27.04 c -0.2,1.97 -0.4,3.98 -0.61,6.04 c -9.61,46.14 -19.47,92.7 -29.05,138.88 c -11.27,47.07 -18.19,94.41 -36.19,139.68 c -20.11,46.06 -56.52,71.3 -107.19,52.21 c -48.21,-19.49 -65.99,-74.53 -70.02,-122.15 Z"/>
         <path class="ink-fill" opacity="0.64" d="M 245.09,12.24 c -0.7,-0.19 -1.41,-0.36 -2.12,-0.51 c 1.23,-0.47 2.47,-1.03 3.72,-1.68 c 7.25,-2.33 14.5,-4.63 21.73,-6.92 c 1.32,-0.63 1.89,-1.64 3.4,-0.39 c -1.22,0.82 -2.56,1.45 -4.03,1.88 c -2.04,0.46 -4.05,0.99 -6.04,1.58 c -4.78,1.95 -9.59,3.8 -14.43,5.57 c -0.73,0.23 -1.47,0.39 -2.23,0.47 Z"/>
@@ -319,53 +428,46 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
       Jelann Arts
     </div>
     <div class="navlinks">
-      <a href="#work">Work</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#process">Process</a>
       <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
       <button class="nav-cta" onclick="openQuote()">Get a quote</button>
     </div>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="kicker">Jelann Arts</div>
-      <h1>Logos with <em>identity.</em></h1>
-      <p>Custom logos designed to give your game a recognizable identity, built for Roblox titles and other game projects.</p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="openQuote()">Get a quote</button>
-        <button class="btn-ghost" onclick="document.getElementById('work').scrollIntoView()">View work</button>
-      </div>
-    </div>
-    <div class="hero-showcase" id="heroShowcase"></div>
-  </div>
+<section class="hero2" id="hero" aria-roledescription="carousel" aria-label="Latest work">
+  <h1 class="sr">Jelann Arts: custom game logos for Roblox developers</h1>
+  <div id="hSlides"></div>
+  <button class="h-arrow h-prev" type="button" aria-label="Previous slide" onclick="heroGo(-1)">‹</button>
+  <button class="h-arrow h-next" type="button" aria-label="Next slide" onclick="heroGo(1)">›</button>
+  <div class="h-dots" id="hDots"></div>
 </section>
 
 
-<section id="work" class="wrap">
+<section id="about" class="wrap" style="padding-top:88px;padding-bottom:0">
   <div class="section-head">
-    <div class="section-label"><span class="eb-num">01</span> Selected work</div>
-    <h2>Custom game <em>identities.</em></h2>
-    <p>Designed around different worlds, genres, and styles. Click the centered logo for a closer look.</p>
+    <div class="section-label"><span class="eb-num">01</span> About</div>
+    <h2>Welcome to <em>Jelann Arts.</em></h2>
+    <p>I design logos for games, mostly Roblox titles, for solo developers and small studios. Prices are fixed and the process is simple. Every logo is built to read instantly, even at thumbnail size, and give your game its own identity.</p>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="section-head work-head">
+    <div>
+      <div class="section-label"><span class="eb-num">02</span> A selection of</div>
+      <h2>Recent <em>projects.</em></h2>
+    </div>
+    <button class="btn-ghost" type="button" onclick="openQuote()">Get a quote</button>
   </div>
 
-  <div class="carousel" id="carousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Recent works">
-    <button class="car-arrow car-prev" id="carPrev" type="button" aria-label="Previous project">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="car-viewport" id="carViewport">
-      <div class="car-track" id="carTrack"></div>
-    </div>
-    <button class="car-arrow car-next" id="carNext" type="button" aria-label="Next project">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-  </div>
+  <div class="pj-grid" id="projGrid"></div>
 </section>
 
 <section id="studios" class="wrap studios" aria-label="Studios worked with">
-  <div class="studios-label">Worked with</div>
+  <div class="studios-label">Logos delivered for</div>
   <div class="studio-row">
     <div class="studio-card"><div class="logo-box"><img src="studio-baobab.webp" alt="Fun Simulators To Play logo, designed for Baobab Studios" loading="lazy"></div><div class="nm">Baobab Studios</div></div>
     <div class="studio-card"><div class="logo-box"><img src="studio-starx.webp" alt="StarX logo, designed for StarX" loading="lazy"></div><div class="nm">StarX</div></div>
@@ -377,41 +479,34 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<section id="about" class="wrap" style="padding-top:88px;padding-bottom:0">
-  <div class="section-head">
-    <div class="section-label"><span class="eb-num">03</span> About</div>
-    <h2>Game logos, <em>specifically.</em></h2>
-    <p>Jelann Arts designs custom logos and visual identities for games primarily Roblox titles and other game projects. Every mark is built to read instantly and give a game its own identity.</p>
-  </div>
-</section>
 
 <section id="process" class="wrap" style="padding-top:56px;padding-bottom:96px;border-bottom:1px solid var(--line)">
   <div class="section-head">
-    <div class="section-label"><span class="eb-num">04</span> Process</div>
+    <div class="section-label"><span class="eb-num">03</span> Process</div>
     <h2>From brief to <em>delivery.</em></h2>
   </div>
   <div class="process-row">
-    <div class="process-step"><span class="ps-num">01</span><h3>Brief</h3><p>Tell me about your game, theme, and what you're looking for.</p></div>
-    <div class="process-step"><span class="ps-num">02</span><h3>Design</h3><p>I develop the logo concept and refine it through the included revision process.</p></div>
-    <div class="process-step"><span class="ps-num">03</span><h3>Delivery</h3><p>Receive the finished logo files, ready for your game.</p></div>
+    <div class="process-step"><span class="ps-num">01</span><h3>Brief</h3><p>Tell me about your game, its theme, and what you need.</p></div>
+    <div class="process-step"><span class="ps-num">02</span><h3>Design</h3><p>I build the concept, then refine it through your included revisions.</p></div>
+    <div class="process-step"><span class="ps-num">03</span><h3>Delivery</h3><p>You get the final files, ready to drop into your game.</p></div>
   </div>
 </section>
 
 <section id="pricing" class="wrap">
   <div class="section-head">
-    <div class="section-label"><span class="eb-num">02</span> Pricing</div>
+    <div class="section-label"><span class="eb-num">04</span> Pricing</div>
     <h2>Three ways to <em>work together.</em></h2>
-    <p>Pick the package that fits the project. Pricing is fixed and the revision process is clear from the start.</p>
+    <p>Fixed prices and clear revisions, so you know the cost up front. Pick the package that fits your budget.</p>
   </div>
   <div class="price-grid">
     <div class="price-card">
       <div class="p-name">STARTER</div>
       <div class="p-amt">$65</div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 concept</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 revision included</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~1–2 week turnaround</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 concept</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 revision included</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~1–2 week turnaround</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG</li>
       </ul>
       <button class="choose" onclick="openQuote('Starter')">Get Started</button>
     </div>
@@ -419,10 +514,10 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
       <div class="p-name">STANDARD</div>
       <div class="p-amt">$90</div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>2 revisions included</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~5–7 day turnaround</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG + one-color (white/black) version</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 alternate color variation</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>2 revisions included</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~5–7 day turnaround</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: PNG + one-color (white/black) version</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 alternate color variation</li>
       </ul>
       <button class="choose" onclick="openQuote('Standard')">Get Started</button>
     </div>
@@ -430,9 +525,9 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
       <div class="p-name">PROFESSIONAL</div>
       <div class="p-amt">$150</div>
       <ul>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3 revisions included</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3–5 day turnaround</li>
-        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: project files, PNG, 2D wordmark</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3 revisions included</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3–5 day turnaround</li>
+        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>Final delivery: project files, PNG, 2D wordmark</li>
       </ul>
       <button class="choose" onclick="openQuote('Professional')">Get Started</button>
     </div>
@@ -441,7 +536,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
     <div class="extra"><strong>Rush order</strong><span class="pct">+25%</span><span class="note">Of the selected package price. Need it sooner? Toggle it on in the quote calculator.</span></div>
     <div class="extra"><strong>Additional revision</strong><span class="pct">+10% per revision</span><span class="note">Also calculated from the selected package price, not a running total.</span></div>
   </div>
-  <p class="rev-note">Revisions are for refining the logo created from your original brief. A completely new concept, new direction, or work outside the original project scope may be treated as a new project and require a separate quote.</p>
+  <p class="rev-note">Revisions refine the logo from your original brief. A new concept or direction, or work outside the original scope, may need a separate quote.</p>
   <p class="rev-note">How payment works: pay 50% to start, 50% when you approve the final logo.</p>
 </section>
 
@@ -449,7 +544,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
   <div class="quote-band">
     <div>
       <h3>Your game deserves an identity.</h3>
-      <p>Let's create a logo players remember. Tell me about your project and I'll follow up with a quote.</p>
+      <p>Whether it's your first game or your tenth, tell me about it and I'll follow up with a quote.</p>
     </div>
     <button class="btn-primary" onclick="openQuote()">Get a quote</button>
   </div>
@@ -458,7 +553,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 <footer>
   <div class="foot-inner">
     <span style="display:flex;align-items:center;gap:8px">
-      <svg class="brand-mark" style="height:16px" viewBox="0 0 344 422" xmlns="http://www.w3.org/2000/svg">
+      <svg class="brand-mark" style="height:16px" viewBox="0 0 344 422" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path class="ink-fill" d="M 22.02,248 c -0.32,-1.46 0.17,-2.49 1.47,-3.08 c 28.07,-10.86 56.13,-21.75 84.18,-32.66 c 1.24,-0.6 2.46,-0.57 3.66,0.1 c 10.47,6.4 20.86,12.92 31.17,19.55 c 0.25,0.5 0.37,1.03 0.35,1.59 c -0.23,18 -0.16,36 0.21,54 c 1.47,8.83 0.94,24.27 4.95,31.99 c 1.79,1.6 4.4,0.05 6.02,-1.06 c 11.79,-10.91 16.47,-36.97 20.61,-52.12 c 8.15,-38.78 13.54,-79.27 17.2,-118.7 c -0.55,-0.53 -1.17,-0.58 -1.85,-0.15 c -27,12.03 -53.98,24.1 -80.93,36.24 c -0.79,0.31 -1.61,0.4 -2.45,0.29 c -6.66,-3.49 -21.79,-11.28 -27.16,-14.93 c -15.29,-20.1 -30.54,-40.22 -45.78,-60.36 c -0.56,-0.55 -0.71,-1.18 -0.46,-1.89 c 85.89,-34.86 171.82,-69.67 257.78,-104.42 c 0.68,-0.21 1.35,-0.18 2.01,0.08 c 11.03,6.1 22.2,11.94 33.5,17.52 c 0.31,0.45 0.46,0.94 0.46,1.49 c -10.4,64.56 -23.08,127.95 -38.39,191.54 c -15.95,57.31 -32.57,128.02 -72.07,173.98 c -27.98,31.85 -69.47,25.11 -105.19,12.35 c -52.11,-21.21 -76.71,-69.06 -86.16,-121.87 c -1.38,-9.77 -2.26,-19.74 -3.13,-29.48 Z M 242.97,11.73 c 0.71,0.15 1.42,0.32 2.12,0.51 c -70.45,26.58 -140.96,53.02 -211.52,79.31 c -0.58,-0.53 -0.81,-1.21 -0.69,-2.02 c 0.05,-3.21 0.28,-6.4 0.7,-9.58 c 0.19,-0.43 0.51,-0.73 0.95,-0.89 c 69.42,-22.67 138.9,-45.11 208.44,-67.33 Z M 39.32,257.08 c 4.03,47.62 21.81,102.66 70.02,122.15 c 50.67,19.09 87.08,-6.15 107.19,-52.21 c 18,-45.27 24.92,-92.61 36.19,-139.68 c 9.58,-46.18 19.44,-92.74 29.05,-138.88 c 0.21,-2.06 0.41,-4.07 0.61,-6.04 c -11.06,8.37 -26.13,17.63 -35.8,27.04 c -0.22,-0.7 -0.05,-1.33 0.52,-1.9 c 12.35,-12.28 24.48,-26.6 36.35,-39.51 c 0.68,-1.46 2.71,-7.77 1.04,-8.62 c -75.06,31.12 -150.12,62.22 -225.2,93.28 c -1.13,0.5 -1.33,1.24 -0.59,2.24 c 10.27,14.02 20.5,28.05 30.7,42.12 c 0.29,0.26 0.64,0.37 1.03,0.31 c 57.06,-25.36 114.12,-50.74 171.17,-76.13 c 0.48,0.07 0.73,-1.17 1.11,-0.59 c -0.49,1.33 -1.38,2.33 -2.66,2.99 c -16.28,17.03 -32.64,33.96 -49.1,50.81 c -4.56,3.39 -3.03,26.83 -4.09,33.04 c -4.6,46.46 -9.37,93.09 -25.62,137.2 c -6.36,15.49 -16.04,35.16 -34.74,37.05 c -22.5,-1.29 -36.4,-17.17 -43.12,-37.44 c -1.22,-4.43 -5.76,-22.02 -3.87,-25.33 c 3.82,5.57 7.54,11.21 11.16,16.94 c 0.57,0.63 0.76,1.39 1.67,0.8 c -1.2,-17.01 -2.98,-34.27 -5.06,-51.25 c -0.19,-2.09 -0.5,-14.08 -1.85,-15.14 c -2.26,0.93 -8.63,2.99 -9.79,4.96 c -5.74,14.13 -11.45,28.25 -17.13,42.36 c -0.75,-2.26 0.75,-5.07 1.13,-7.34 c 0.77,-9.29 2.71,-18.65 4.22,-27.84 c 0.24,-0.87 0.07,-1.63 -0.5,-2.28 c -14,4.77 -27.96,9.68 -41.89,14.74 c -1.27,0.2 -1.99,0.92 -2.15,2.15 Z M 344,61.04 c 0,2.64 0,5.28 0,7.92 c -0.52,0.31 -0.77,0.77 -0.76,1.38 c -12.78,79.67 -31.63,160.2 -62.27,235.07 c -10.33,25.25 -23.03,49.24 -38.09,71.97 c -0.5,0.58 -1.05,1.11 -1.64,1.58 c -0.16,-0.32 -0.31,-0.64 -0.46,-0.96 c 1.71,-2.57 3.22,-5.25 4.55,-8.03 c 9.73,-19.64 18.42,-39.72 26.06,-60.26 c 32.25,-86.82 52.42,-177.72 65.45,-269.21 c 0.6,-4.02 1.07,-8.04 1.41,-12.08 c 0.12,-0.16 0.25,-0.31 0.38,-0.46 c 0.4,1.49 0.79,3.02 1.19,4.57 c 1.17,9.31 2.37,18.61 3.59,27.92 c 0.08,0.31 0.28,0.51 0.59,0.59 Z M 61.25,176.9 c -0.16,0.38 -0.32,0.77 -0.48,1.15 c -0.74,-0.35 -1.33,-0.86 -1.77,-1.55 c -14.56,-18.71 -29.11,-37.43 -43.64,-56.17 c -1.24,-3.43 -1.27,-13.9 -1.61,-17.94 c 0.16,-1.45 0.65,-1.58 1.49,-0.37 c 15.21,25.05 30.54,50.02 46.01,74.88 Z M 112.32,197.82 c -0.13,-0.57 -0.01,-1.07 0.37,-1.47 c 2.58,0.39 2.38,-0.91 4.29,-1.95 c 20.27,-9.15 39.81,-19.94 59.76,-29.79 c 0.37,-0.24 0.71,-0.22 1.02,0.07 c -1.41,7 -2.97,13.98 -4.68,20.92 c -0.3,1.11 0.55,5.43 -1.78,3.67 c -0.33,-4.38 -1,-8.71 -2.02,-13 c -0.2,-0.95 -0.77,-1.37 -1.72,-1.27 c -13.96,5.64 -27.93,11.26 -41.9,16.86 c -2.97,2.08 -7.57,3.12 -10.46,4.68 c -1.27,-0.17 -2.23,0.26 -2.88,1.28 Z M 13.34,205.29 c 6.81,0.01 8.38,12.21 9.7,17.19 c 0.31,1.27 1.12,1.71 2.42,1.32 c 6.71,-1.23 13.42,-2.37 20.1,-3.4 c -0.93,1.14 -2.14,1.79 -3.62,1.94 c -6.65,3.35 -13.32,6.68 -20,9.97 c -0.62,0.38 -1.25,0.43 -1.89,0.15 c -2.19,-9.07 -4.42,-18.12 -6.71,-27.17 Z M 0,225.96 c 0,-0.64 0,-1.28 0,-1.92 c 1.33,-1.94 2.5,-3.99 3.5,-6.15 c 0.27,-0.33 0.62,-0.54 1.04,-0.61 c 2.39,16.36 4.87,32.72 7.45,49.1 c 0.56,3.24 2,8.18 1.54,11.33 c -0.64,-2.03 -1.13,-4.1 -1.46,-6.2 c -1.4,-1.91 -0.74,-3.23 -1.26,-5.32 c -3.49,-13.16 -6.88,-26.35 -10.17,-39.56 c -0.12,-0.32 -0.34,-0.54 -0.64,-0.67 Z M 136.02,422 c -2.33,0 -4.65,0 -6.98,0 c -0.06,-0.32 -0.24,-0.54 -0.54,-0.67 c -24.31,-2.72 -48.9,-13.51 -65.77,-31.58 c -2.64,-3.02 -5.32,-6 -8.02,-8.96 c -0.38,-0.39 -0.47,-0.84 -0.26,-1.34 c 0.72,0.5 1.51,0.9 2.35,1.19 c 11.76,10.6 32.49,23.58 47.51,29.6 c 10.07,4.27 22.09,7.47 31.71,11.76 Z"/>
         <path class="paper-fill" d="M 39.32,257.08 c 0.16,-1.23 0.88,-1.95 2.15,-2.15 c 13.93,-5.06 27.89,-9.97 41.89,-14.74 c 0.57,0.65 0.74,1.41 0.5,2.28 c -1.51,9.19 -3.45,18.55 -4.22,27.84 c -0.38,2.27 -1.88,5.08 -1.13,7.34 c 5.68,-14.11 11.39,-28.23 17.13,-42.36 c 1.16,-1.97 7.53,-4.03 9.79,-4.96 c 1.35,1.06 1.66,13.05 1.85,15.14 c 2.08,16.98 3.86,34.24 5.06,51.25 c -0.91,0.59 -1.1,-0.17 -1.67,-0.8 c -3.62,-5.73 -7.34,-11.37 -11.16,-16.94 c -1.89,3.31 2.65,20.9 3.87,25.33 c 6.72,20.27 20.62,36.15 43.12,37.44 c 18.7,-1.89 28.38,-21.56 34.74,-37.05 c 16.25,-44.11 21.02,-90.74 25.62,-137.2 c 1.06,-6.21 -0.47,-29.65 4.09,-33.04 c 16.46,-16.85 32.82,-33.78 49.1,-50.81 c 1.28,-0.66 2.17,-1.66 2.66,-2.99 c -0.38,-0.58 -0.63,0.66 -1.11,0.59 c -57.05,25.39 -114.11,50.77 -171.17,76.13 c -0.39,0.06 -0.74,-0.05 -1.03,-0.31 c -10.2,-14.07 -20.43,-28.1 -30.7,-42.12 c -0.74,-1 -0.54,-1.74 0.59,-2.24 c 75.08,-31.06 150.14,-62.16 225.2,-93.28 c 1.67,0.85 -0.36,7.16 -1.04,8.62 c -11.87,12.91 -24,27.23 -36.35,39.51 c -0.57,0.57 -0.74,1.2 -0.52,1.9 c 9.67,-9.41 24.74,-18.67 35.8,-27.04 c -0.2,1.97 -0.4,3.98 -0.61,6.04 c -9.61,46.14 -19.47,92.7 -29.05,138.88 c -11.27,47.07 -18.19,94.41 -36.19,139.68 c -20.11,46.06 -56.52,71.3 -107.19,52.21 c -48.21,-19.49 -65.99,-74.53 -70.02,-122.15 Z"/>
       </svg>
@@ -466,24 +561,38 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
     </span>
     <a href="#termsOverlay" onclick="openTerms(event)" style="text-decoration:underline;text-underline-offset:2px">Terms of Service</a>
     <div class="foot-discord">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)" aria-hidden="true" focusable="false"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
       DM me on Discord: jelann_arts
     </div>
   </div>
 </footer>
 
 <div class="overlay viewer-overlay-root" id="caseOverlay">
+  <button class="viewer-close" onclick="closeCase()" aria-label="Close">✕</button>
   <div class="viewer" id="viewerStage">
     <div class="viewer-darken" id="viewerDarken"></div>
-    <button class="viewer-close" onclick="closeCase()" aria-label="Close">✕</button>
     <button class="viewer-nav prev" onclick="navCase(-1)" aria-label="Previous project">‹</button>
     <button class="viewer-nav next" onclick="navCase(1)" aria-label="Next project">›</button>
     <img class="viewer-logo" id="viewerLogo" src="" alt="">
-    <div class="viewer-caption">
-      <div class="vc-name" id="viewerName"></div>
-      <div class="vc-cat" id="viewerCat"></div>
-    </div>
   </div>
+  <div class="case-detail"><div class="wrap">
+    <div class="cd-kicker" id="viewerCat"></div>
+    <h2 id="viewerName"></h2>
+    <hr>
+    <div class="cd-grid">
+      <div class="cd-meta">
+        <div><span>Project</span><b id="cdProject"></b></div>
+        <div><span>Style</span><b id="cdStyle"></b></div>
+        <div><span>Service</span><b>Custom logo design</b></div>
+      </div>
+      <div class="cd-body">
+        <h3>Project details</h3>
+        <p id="cdDesc"></p>
+        <button class="btn-primary" onclick="openQuote()">Get a logo like this</button>
+      </div>
+    </div>
+    <div class="cd-more"><h3>More projects</h3><div class="cd-row" id="cdMore"></div></div>
+  </div></div>
 </div>
 
 <div class="overlay" id="quoteOverlay">
@@ -535,7 +644,7 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 
         <div class="callout">
           <div class="callout-tag">IMPORTANT</div>
-          <p>Revisions are for refining the logo created from your original brief. A completely new concept, new direction, or work outside the original project scope may be treated as a new project and require a separate quote.</p>
+          <p>Revisions refine the logo from your original brief. A new concept or direction, or work outside the original scope, may need a separate quote.</p>
         </div>
 
         <div class="qsummary" id="liveSummary"></div>
@@ -597,14 +706,14 @@ footer{padding:56px 32px 40px;border-top:1px solid var(--line)}
 
       <div id="confirmScreen" class="confirm-screen">
         <div class="confirm-check">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.6"/></svg>
         </div>
         <h2>Quote Request Ready</h2>
         <div class="qsummary" id="confirmSummary"></div>
         <p class="confirm-note">By submitting this request, you confirm that you have read and agreed to the Terms of Service.</p>
         <div class="discord-row">
           <div class="discord-row-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)" aria-hidden="true" focusable="false"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
             DM me on Discord: <strong>jelann_arts</strong>
           </div>
           <button class="copy-btn" id="copyUserBtn" onclick="copyUsername()">Copy username</button>
@@ -688,106 +797,28 @@ const projects = [
   desc:"A flame-lit anime crossover logo referencing genre iconography. Built to hold up as a bold thumbnail at very small sizes.", bgPos:"right 50%", overlay:0.24}
 ];
 
-// ---- Recent Works carousel ----
-const carTrack=document.getElementById('carTrack');
-const carousel=document.getElementById('carousel');
-
-const AUTOPLAY_MS = 5200;
-let carActive = 0;
-let carRAF = null;
-let carPaused = false;
-
-function renderCarousel(){
-  if(!carTrack) return;
-  carTrack.innerHTML = projects.map((p,i)=>`
-    <button type="button" class="car-slide" data-index="${i}" aria-label="${p.title}">
-      <img src="${p.img}" alt="${p.title} logo" loading="lazy" decoding="async">
-    </button>
-  `).join('');
-  carTrack.querySelectorAll('.car-slide').forEach(el=>{
-    el.addEventListener('click',()=>{
-      const i = Number(el.dataset.index);
-      if(i===carActive){ openCase(i); }
-      else { goToSlide(i,true); }
-    });
-  });
-  updateCarousel();
-  startAutoplay();
+// ---- Recent projects grid (full-bleed, big cards first) ----
+const projGrid=document.getElementById('projGrid');
+if(projGrid){
+  const n=projects.length, rest=n-2, r=rest%3;
+  projGrid.innerHTML=projects.map((p,i)=>{
+    let size='third';
+    if(i<2) size='half';
+    else if(r===1 && i===n-1) size='full';
+    else if(r===2 && i>=n-2) size='half';
+    const nm=p.title.replace(/"/g,'&quot;');
+    return `<article class="pj pj-${size}" style="--c:${p.color||'var(--accent)'}">
+      <button type="button" class="pj-link" onclick="openCase(${i})" aria-label="${nm}">
+        <span class="pj-img">
+          <span class="pj-media" style="background-image:linear-gradient(rgba(12,13,11,.4),rgba(12,13,11,.4)),url('${p.background||BG_IMG}');background-position:${p.bgPos||'center'}"><img src="${p.img}" alt="${nm}: ${p.cat}" loading="lazy" onerror="this.style.visibility='hidden'"></span>
+          <span class="pj-bar"></span><span class="pj-tri"></span>
+        </span>
+        <span class="pj-text"><span class="pj-title">${p.title}</span><span class="pj-tag">${p.cat}</span></span>
+      </button>
+    </article>`;
+  }).join('');
 }
 
-function updateCarousel(){
-  const n = projects.length;
-  const slides = carTrack.querySelectorAll('.car-slide');
-  slides.forEach((el,i)=>{
-    let offset = i - carActive;
-    if(offset > n/2) offset -= n;
-    if(offset < -n/2) offset += n;
-    const dist = Math.abs(offset);
-    const scale = dist===0 ? 1.12 : dist===1 ? .78 : .6;
-    const opacity = dist===0 ? 1 : dist===1 ? .5 : dist===2 ? .18 : 0;
-    el.style.transform = `translate(-50%,-50%) translateX(${offset*68}%) scale(${scale})`;
-    el.style.opacity = opacity;
-    el.style.zIndex = 5 - dist;
-    el.classList.toggle('active', dist===0);
-    el.style.pointerEvents = dist<=2 ? 'auto' : 'none';
-  });
-}
-
-function goToSlide(i,manual){
-  const n = projects.length;
-  carActive = (i+n)%n;
-  updateCarousel();
-  if(manual) startAutoplay();
-}
-function carNextSlide(manual){ goToSlide(carActive+1, manual); }
-function carPrevSlide(manual){ goToSlide(carActive-1, manual); }
-
-function startAutoplay(){
-  if(carRAF) clearTimeout(carRAF);
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  carRAF = setTimeout(()=>{
-    if(!carPaused){
-      carNextSlide(false);
-    }
-    startAutoplay();
-  }, AUTOPLAY_MS);
-}
-function pauseAutoplay(){
-  carPaused = true;
-  if(carRAF){ clearTimeout(carRAF); carRAF = null; }
-}
-function resumeAutoplay(){
-  if(carPaused){
-    carPaused = false;
-    startAutoplay();
-  }
-}
-
-if(carousel){
-  carousel.addEventListener('mouseenter',pauseAutoplay);
-  carousel.addEventListener('mouseleave',resumeAutoplay);
-  carousel.addEventListener('focusin',pauseAutoplay);
-  carousel.addEventListener('focusout',resumeAutoplay);
-  carousel.addEventListener('touchstart',pauseAutoplay,{passive:true});
-  carousel.addEventListener('touchend',()=>setTimeout(resumeAutoplay,1200),{passive:true});
-  carousel.addEventListener('keydown',e=>{
-    if(e.key==='ArrowLeft'){ carPrevSlide(true); }
-    if(e.key==='ArrowRight'){ carNextSlide(true); }
-  });
-
-  let touchStartX = null;
-  carousel.addEventListener('touchstart',e=>{ touchStartX = e.touches[0].clientX; },{passive:true});
-  carousel.addEventListener('touchend',e=>{
-    if(touchStartX===null) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if(Math.abs(dx) > 40){ dx<0 ? carNextSlide(true) : carPrevSlide(true); }
-    touchStartX = null;
-  },{passive:true});
-}
-document.getElementById('carPrev')?.addEventListener('click',()=>carPrevSlide(true));
-document.getElementById('carNext')?.addEventListener('click',()=>carNextSlide(true));
-
-renderCarousel();
 
 // ---- hero floating showcase ----
 const heroShowcase=document.getElementById('heroShowcase');
@@ -819,9 +850,14 @@ function renderViewer(){
   viewerStage.style.backgroundPosition=p.bgPos||'center';
   document.getElementById('viewerDarken').style.opacity=p.overlay!=null?p.overlay:0.25;
   document.getElementById('viewerLogo').src=p.img;
-  document.getElementById('viewerLogo').alt=p.title+' logo';
+  document.getElementById('viewerLogo').alt=p.title+': '+p.cat;
   document.getElementById('viewerName').textContent=p.title;
   document.getElementById('viewerCat').textContent=p.cat;
+  document.getElementById('cdProject').textContent=p.title;
+  document.getElementById('cdStyle').textContent=p.cat;
+  const d=document.getElementById('cdDesc'); d.textContent=p.desc||''; d.previousElementSibling.style.display=d.style.display=p.desc?'':'none';
+  document.getElementById('cdMore').innerHTML=projects.map((q,k)=>k===currentIndex?'':`<button type="button" onclick="openCase(${k})" aria-label="${q.title.replace(/"/g,'&quot;')}"><img src="${q.img}" alt="${q.title.replace(/&quot;/g,'')}: ${q.cat}" loading="lazy"></button>`).join('');
+  caseOverlay.scrollTop=0;
 }
 function navCase(dir){
   currentIndex=(currentIndex+dir+projects.length)%projects.length;
@@ -1055,6 +1091,43 @@ document.addEventListener('keydown',e=>{
 });
 pickPkg("Standard");
 updateSteps();
+
+/* hero slider: latest work */
+const heroN=Math.min(5,projects.length);
+const hSlides=document.getElementById('hSlides'), hDots=document.getElementById('hDots');
+let heroI=0, heroTimer=null;
+hSlides.innerHTML=projects.slice(0,heroN).map((q,k)=>`
+  <div class="h-slide${k?'':' active'}" style="background-image:url('${q.background||BG_IMG}');background-position:${q.bgPos||'center'}" aria-hidden="${k?'true':'false'}">
+    <div class="h-inner">
+      <div>
+        <div class="h-kicker">${k?'Featured work':'Latest work'}</div>
+        <h2>${q.title}</h2>
+        ${q.desc?`<p>${q.desc}</p>`:''}
+        <div class="hero-actions">
+          <button class="btn-primary" type="button" onclick="openCase(${k})">View project</button>
+          <button class="btn-ghost" type="button" onclick="openQuote()">Get a quote</button>
+        </div>
+      </div>
+      <div class="h-logo"><img src="${q.img}" alt="${q.title}: ${q.cat}" ${k?'loading="lazy"':''}></div>
+    </div>
+    <div class="h-tag">${q.cat}</div>
+  </div>`).join('');
+hDots.innerHTML=projects.slice(0,heroN).map((q,k)=>`<button type="button" class="${k?'':'active'}" aria-label="Show ${q.title}" onclick="heroShow(${k})"></button>`).join('');
+function heroShow(i){
+  heroI=(i+heroN)%heroN;
+  hSlides.querySelectorAll('.h-slide').forEach((s,k)=>{s.classList.toggle('active',k===heroI);s.setAttribute('aria-hidden',k===heroI?'false':'true');});
+  hDots.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('active',k===heroI));
+}
+function heroGo(d){heroShow(heroI+d);heroPlay();}
+function heroPlay(){
+  clearInterval(heroTimer);
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  heroTimer=setInterval(()=>heroShow(heroI+1),6500);
+}
+const heroEl=document.getElementById('hero');
+heroEl.addEventListener('mouseenter',()=>clearInterval(heroTimer));
+heroEl.addEventListener('mouseleave',heroPlay);
+heroPlay();
 </script>
 </body>
 </html>
