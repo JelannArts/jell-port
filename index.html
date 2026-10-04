@@ -411,6 +411,81 @@ header{background:var(--surface)}
 /* one continuous header bar */
 header{background:rgba(12,13,11,.86)}
 .navlinks{background:transparent}
+
+/* ---- Pricing: stepped heights, clearer hierarchy, one filled button ---- */
+.price-grid{align-items:end;gap:20px}
+.price-card{display:flex;flex-direction:column;border-radius:12px;padding:34px 30px;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.price-card:nth-child(1){min-height:480px}
+.price-card:nth-child(2){min-height:536px}
+.price-card:nth-child(3){min-height:592px}
+.price-card:hover{transform:translateY(-4px);border-color:#4a4b43;box-shadow:0 20px 44px rgba(0,0,0,.45)}
+.price-card .p-name{font-size:12px;letter-spacing:.14em}
+.price-card .p-amt{font-size:56px;font-weight:700;line-height:1;margin-top:14px}
+.price-card .p-unit{font-size:12px;color:var(--ink-soft);margin-top:8px;letter-spacing:.04em}
+.price-card ul{margin-top:26px;gap:14px}
+.price-card li svg{transition:transform .25s}
+.price-card:hover li svg{transform:scale(1.2)}
+.price-card .choose{margin-top:auto}
+.price-card ul{margin-bottom:28px}
+.price-card.feat{border-color:var(--accent);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 44px rgba(198,161,91,.16)}
+.price-card.feat:hover{border-color:var(--accent);box-shadow:0 28px 66px rgba(0,0,0,.55),0 0 54px rgba(198,161,91,.24)}
+.price-card.feat .p-name{color:var(--accent)}
+.price-card.feat::before{top:-13px;left:30px;right:auto;background:var(--accent);color:var(--paper);padding:5px 12px;border-radius:999px;font-size:10px}
+.price-card.feat .choose{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.price-card.feat .choose:hover{background:#d8b36b;color:var(--paper)}
+@media(max-width:860px){.price-grid{align-items:stretch}.price-card:nth-child(n){min-height:0}}
+
+/* ---- Standard: the one to pick ---- */
+@media(min-width:861px){.price-grid{grid-template-columns:1fr 1.12fr 1fr}}
+.price-card.feat{background:radial-gradient(120% 55% at 50% 0%,rgba(198,161,91,.24),transparent 62%),linear-gradient(180deg,rgba(198,161,91,.07),rgba(198,161,91,0) 45%),var(--surface);
+  box-shadow:0 0 0 1px rgba(198,161,91,.4),0 28px 64px rgba(0,0,0,.55),0 0 60px rgba(198,161,91,.2)}
+.price-card.feat:hover{box-shadow:0 0 0 1px rgba(198,161,91,.6),0 32px 72px rgba(0,0,0,.6),0 0 72px rgba(198,161,91,.3)}
+.price-card.feat .p-amt{color:var(--accent);text-shadow:0 0 28px rgba(198,161,91,.35)}
+.price-card.feat .p-unit{color:#c9c6b9}
+.price-card.feat li{color:var(--ink)}
+.price-card.feat .choose{position:relative;overflow:hidden;padding:15px;font-size:15px}
+.price-card.feat .choose::after{content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-70%}100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.price-card.feat .choose::after{animation:none;display:none}}
+
+/* Standard: crisp instead of hazy */
+.price-card.feat{background:linear-gradient(180deg,#201e18 0,#18191a 55%,#17181A 100%);
+  box-shadow:inset 0 3px 0 var(--accent),0 0 0 1px rgba(198,161,91,.55),0 24px 56px rgba(0,0,0,.6),0 0 40px rgba(198,161,91,.08)}
+.price-card.feat:hover{box-shadow:inset 0 3px 0 var(--accent),0 0 0 1px var(--accent),0 28px 64px rgba(0,0,0,.65),0 0 48px rgba(198,161,91,.14)}
+.price-card.feat .p-amt{text-shadow:none}
+.price-card.feat .p-name{color:#d8b36b}
+.price-card:nth-child(1){min-height:440px}
+.price-card:nth-child(2){min-height:490px}
+.price-card:nth-child(3){min-height:540px}
+
+.price-card.feat .p-amt{color:var(--ink)}
+.price-card.feat .p-name{color:var(--ink)}
+.price-card.feat .p-unit,.price-card.feat li{color:var(--ink)}
+
+.price-card .p-amt{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:52px;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums;line-height:1}
+
+/* shine: hover on the other buttons, faint sweep across the Standard card */
+.price-card:not(.feat) .choose{position:relative;overflow:hidden}
+.price-card:not(.feat) .choose::after{content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);pointer-events:none}
+.price-card:not(.feat) .choose:hover::after{left:130%;transition:left .7s ease}
+.price-card.feat::after{content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.07) 50%,transparent 58%);background-size:260% 100%;background-position:130% 0;animation:cardsheen 7s ease-in-out 1.5s infinite}
+@keyframes cardsheen{0%,60%{background-position:130% 0}100%{background-position:-30% 0}}
+@media(prefers-reduced-motion:reduce){.price-card.feat::after{animation:none;display:none}.price-card:not(.feat) .choose::after{display:none}}
+
+.foot-social{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-x{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);transition:color .2s}
+.foot-x:hover{color:var(--accent)}
+.foot-x:hover svg{fill:var(--accent)}
+.foot-x:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:3px}
+
+/* About -> Work transition: one intro block, no orphan divider, tighter gap */
+#about{padding-top:88px!important;padding-bottom:80px!important}
+#about .section-head{border-bottom:0;padding-bottom:0;margin-bottom:0;display:grid;grid-template-columns:1fr 1.25fr;grid-template-areas:"label label" "title text";gap:6px 72px;align-items:start}
+#about .section-label{grid-area:label;margin-bottom:18px}
+#about .section-head h2{grid-area:title}
+#about .section-head p{grid-area:text;margin-top:6px;max-width:none;font-size:17px;line-height:1.7}
+#work{padding-top:72px}
+@media(max-width:860px){#about{padding-top:64px!important;padding-bottom:56px!important}#about .section-head{grid-template-columns:1fr;grid-template-areas:"label" "title" "text";gap:6px}#about .section-head p{margin-top:12px}#work{padding-top:56px}}
 </style>
 </head>
 <body>
@@ -502,6 +577,7 @@ header{background:rgba(12,13,11,.86)}
     <div class="price-card">
       <div class="p-name">STARTER</div>
       <div class="p-amt">$65</div>
+      <div class="p-unit">USD · per logo</div>
       <ul>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 concept</li>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>1 revision included</li>
@@ -513,6 +589,7 @@ header{background:rgba(12,13,11,.86)}
     <div class="price-card feat">
       <div class="p-name">STANDARD</div>
       <div class="p-amt">$90</div>
+      <div class="p-unit">USD · per logo</div>
       <ul>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>2 revisions included</li>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>~5–7 day turnaround</li>
@@ -524,6 +601,7 @@ header{background:rgba(12,13,11,.86)}
     <div class="price-card">
       <div class="p-name">PROFESSIONAL</div>
       <div class="p-amt">$150</div>
+      <div class="p-unit">USD · per logo</div>
       <ul>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3 revisions included</li>
         <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20 6L9 17l-5-5" stroke="var(--accent)" stroke-width="2.4"/></svg>3–5 day turnaround</li>
@@ -560,9 +638,15 @@ header{background:rgba(12,13,11,.86)}
       © Jelann Arts
     </span>
     <a href="#termsOverlay" onclick="openTerms(event)" style="text-decoration:underline;text-underline-offset:2px">Terms of Service</a>
-    <div class="foot-discord">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)" aria-hidden="true" focusable="false"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
-      DM me on Discord: jelann_arts
+    <div class="foot-social">
+  <div class="foot-discord">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--ink)" aria-hidden="true" focusable="false"><path d="M20 5.5A17 17 0 0016 4l-.4.9a15 15 0 00-7.2 0L8 4a17 17 0 00-4 1.5C1.5 9 1 12.3 1.2 15.6A17 17 0 006 18l.9-1.4a10 10 0 01-1.6-.8l.4-.3a12 12 0 0012.6 0l.4.3c-.5.3-1 .6-1.6.8L18 18a17 17 0 004.8-2.4c.3-3.9-.7-7.1-2.8-10.1zM9 14c-.8 0-1.5-.8-1.5-1.8S8.2 10.5 9 10.5s1.5.8 1.5 1.7S9.8 14 9 14zm6 0c-.8 0-1.5-.8-1.5-1.8s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.8-1.5 1.8z"/></svg>
+        DM me on Discord: jelann_arts
+      </div>
+    <a class="foot-x" href="https://x.com/JelannRBLX" target="_blank" rel="noopener noreferrer" aria-label="Jelann on X (Twitter), opens in a new tab">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--ink)" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+      @JelannRBLX
+    </a>
     </div>
   </div>
 </footer>
@@ -1128,6 +1212,25 @@ const heroEl=document.getElementById('hero');
 heroEl.addEventListener('mouseenter',()=>clearInterval(heroTimer));
 heroEl.addEventListener('mouseleave',heroPlay);
 heroPlay();
+
+/* in-page links: scroll to the section without leaving #hash in the address bar */
+(function(){
+  var clean=function(){ if(history.replaceState) history.replaceState(null,'',location.pathname+location.search); };
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var el=document.getElementById(a.getAttribute('href').slice(1));
+    if(!el||!el.matches('section')) return;
+    e.preventDefault();
+    var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    el.scrollIntoView({behavior:calm?'auto':'smooth',block:'start'});
+    el.setAttribute('tabindex','-1');
+    el.focus({preventScroll:true});
+    clean();
+  });
+  /* arriving with a #hash (e.g. from the 404 page): let the browser jump, then tidy the URL */
+  if(location.hash) window.addEventListener('load',function(){ setTimeout(clean,50); });
+})();
 </script>
 </body>
 </html>
