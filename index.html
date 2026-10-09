@@ -896,6 +896,7 @@ button,.btn-primary,.btn-ghost,a{touch-action:manipulation;-webkit-tap-highlight
 
         <div class="mini-reminder">Revision reminder: revisions apply only to the work created for this project. A different concept, new design, or work outside the original scope is a new project and may require a new quote.</div>
 
+        <div class="field" id="tsField" style="display:none"><div id="tsWidget"></div><div id="tsHint" role="alert" style="display:none;font-size:12px;color:var(--accent);margin-top:6px"></div></div>
         <div class="agree-row">
           <label class="agree-check">
             <input type="checkbox" id="agreeTerms" onchange="onAgreeChange()">
@@ -1004,7 +1005,7 @@ button,.btn-primary,.btn-ghost,a{touch-action:manipulation;-webkit-tap-highlight
 
 <section><h3>3. How I use it</h3><p>I use your information to reply to your quote request, prepare and deliver your logo, arrange payment, keep project records, and prevent spam or abuse of the form. I do not sell your information, and I do not use it for advertising.</p></section>
 
-<section><h3>4. Who handles your information</h3><p>I rely on a few services to run this site and the quote form. They process data only to provide those services:</p><p><strong>GitHub</strong> hosts this website. <strong>Cloudflare</strong> receives your quote form submission and forwards it to me. <strong>Discord</strong> delivers your request to me and is where we communicate. <strong>Payment providers</strong> (PayPal, Wise, or a cryptocurrency network) handle payments if you choose them. <strong>Cloudflare Web Analytics</strong> measures how visitors use this site. <!-- Remove the next sentence after you self-host your fonts. --><strong>Google Fonts</strong> supplies this site's typefaces, so your browser connects to Google when the page loads.</p><p>Each provider has its own privacy policy. Your information may be processed in other countries where these providers operate. I may also disclose information if the law requires it.</p></section>
+<section><h3>4. Who handles your information</h3><p>I rely on a few services to run this site and the quote form. They process data only to provide those services:</p><p><strong>GitHub</strong> hosts this website. <strong>Cloudflare</strong> receives your quote form submission and forwards it to me. It also runs a bot check on the form (Cloudflare Turnstile), which loads a script from Cloudflare when you reach the last step. <strong>Discord</strong> delivers your request to me and is where we communicate. <strong>Payment providers</strong> (PayPal, Wise, or a cryptocurrency network) handle payments if you choose them. <strong>Cloudflare Web Analytics</strong> measures how visitors use this site. <!-- Remove the next sentence after you self-host your fonts. --><strong>Google Fonts</strong> supplies this site's typefaces, so your browser connects to Google when the page loads.</p><p>Each provider has its own privacy policy. Your information may be processed in other countries where these providers operate. I may also disclose information if the law requires it.</p></section>
 
 <section><h3>5. Analytics and cookies</h3><p>This site uses Cloudflare Web Analytics to understand how visitors use it, such as which pages are viewed, where visitors come from, and how quickly pages load. Cloudflare states that this service does not use cookies or local storage to track visitors and does not fingerprint individuals. I use this information only to improve the site, not for advertising, and I do not combine it with your quote request details.</p><p>This site does not use cookies for tracking and does not use any other trackers. To learn more about how Cloudflare handles data, see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a>.</p></section>
 
@@ -1252,7 +1253,7 @@ function updateSteps(){
   document.getElementById('nextBtn').style.display = step===4?'none':'inline-flex';
   document.getElementById('finalCta').style.display = step===4?'block':'none';
   if(step===3) renderLiveSummary();
-  if(step===4) buildReview();
+  if(step===4){ buildReview(); loadTurnstile(); }
 }
 function nextStep(){
   if(step===1 && !chosenPkg){ pickPkg('Standard'); }
@@ -1312,6 +1313,21 @@ const QUOTE_ENDPOINT = 'https://jelann-quotes.YOUR-SUBDOMAIN.workers.dev'; // <-
 const DISCORD_NEW = /^[a-z0-9_.]{2,32}$/;
 const DISCORD_OLD = /^.{2,32}#\d{4}$/;
 
+/* ---- Cloudflare Turnstile (bot check). Leave the site key empty to turn it off. ---- */
+const TURNSTILE_SITEKEY = ''; // <-- paste your Turnstile SITE key here (public). Never put the secret key in this file.
+let tsWidgetId = null;
+function loadTurnstile(){
+  if(!TURNSTILE_SITEKEY || document.getElementById('tsScript')) return;
+  document.getElementById('tsField').style.display = 'block';
+  const s = document.createElement('script');
+  s.id = 'tsScript';
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  s.async = true; s.defer = true;
+  s.onload = () => { tsWidgetId = turnstile.render('#tsWidget', {sitekey: TURNSTILE_SITEKEY, theme: 'dark'}); };
+  document.head.appendChild(s);
+}
+function tsToken(){ return (window.turnstile && tsWidgetId !== null) ? (turnstile.getResponse(tsWidgetId) || '') : ''; }
+
 function collectQuote(){
   const v = id => (document.getElementById(id)?.value || '').trim();
   const q = calculateQuote(chosenPkg, rush, extraRevisions);
@@ -1328,7 +1344,8 @@ function collectQuote(){
     name: v('cName'),
     discord: v('cDiscord').replace(/^@/, ''),
     email: v('cEmail'),
-    website: v('cWebsite') // honeypot: must stay empty
+    website: v('cWebsite'), // honeypot: must stay empty
+    turnstileToken: tsToken()
   };
 }
 
@@ -1368,6 +1385,12 @@ async function submitQuote(){
   // Worker not set up yet: use the original copy-and-DM flow
   if(QUOTE_ENDPOINT.includes('YOUR-SUBDOMAIN')){ showConfirm(false); return; }
 
+  if(TURNSTILE_SITEKEY && !data.turnstileToken){
+    const th = document.getElementById('tsHint');
+    th.textContent = 'Please complete the verification check above.'; th.style.display = 'block'; return;
+  }
+  document.getElementById('tsHint').style.display = 'none';
+
   const label = btn.querySelector('span');
   const original = label.textContent;
   btn.disabled = true; label.textContent = 'Sending…';
@@ -1383,6 +1406,7 @@ async function submitQuote(){
     showConfirm(false);
   }finally{
     btn.disabled = false; label.textContent = original;
+    if(window.turnstile && tsWidgetId !== null){ try{ turnstile.reset(tsWidgetId); }catch(_){} }
   }
 }
 async function copyUsername(){
