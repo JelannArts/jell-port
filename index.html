@@ -1309,7 +1309,7 @@ Email: ${email}`;
 }
 
 /* ---- Quote sending: posts the request to a Cloudflare Worker that forwards it to Discord ---- */
-const QUOTE_ENDPOINT = 'https://jelann-quotes.kengclients.workers.dev/'; // <-- replace with your deployed Worker URL
+const QUOTE_ENDPOINT = 'https://jelann-quotes.kengclients.workers.dev'; // <-- replace with your deployed Worker URL
 const DISCORD_NEW = /^[a-z0-9_.]{2,32}$/;
 const DISCORD_OLD = /^.{2,32}#\d{4}$/;
 
