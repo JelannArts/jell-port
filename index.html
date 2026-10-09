@@ -1314,7 +1314,7 @@ const DISCORD_NEW = /^[a-z0-9_.]{2,32}$/;
 const DISCORD_OLD = /^.{2,32}#\d{4}$/;
 
 /* ---- Cloudflare Turnstile (bot check). Leave the site key empty to turn it off. ---- */
-const TURNSTILE_SITEKEY = ''; // <-- paste your Turnstile SITE key here (public). Never put the secret key in this file.
+const TURNSTILE_SITEKEY = '0x4AAAAAAFSPeVOFNlhAwDc5'; // <-- paste your Turnstile SITE key here (public). Never put the secret key in this file.
 let tsWidgetId = null;
 function loadTurnstile(){
   if(!TURNSTILE_SITEKEY || document.getElementById('tsScript')) return;
